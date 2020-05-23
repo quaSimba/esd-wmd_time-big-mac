@@ -1,10 +1,11 @@
-Body {
-  font-family: 'Inter', sans-serif;
+body {
+  font-family: 'Roboto', sans-serif;
   color: #515151;
 }
 
 h1 {
   font-family: 'Roboto Slab', serif;
+  font-weight: 500;
   color: #FFBC0D;
 }
 
@@ -19,7 +20,7 @@ h1 {
 
 #lower-content {
   position: absolute;
-  bottom: 60px;
+  bottom: 40px;
 }
 
 .row {
@@ -40,9 +41,10 @@ h1 {
 }
 
 #slogan {
-  max-width: 50%;
+  max-width: 40%;
   margin: 20px 15px 0;
-  font-size: 12pt;
+  font-size: 1.25rem;
+  line-height: 1em;
 }
 
 #info-icon {
@@ -63,13 +65,13 @@ h1 {
 }
 
 button {
-    background-color: #DB0007;
-    border-radius: 5px;
-    height: 35%;
-    width: 75%;
-    position: absolute;
-    padding: 0 12.5%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    color: #FFBC0D; 
+  background-color: #DB0007;
+  border-radius: 5px;
+  height: 40px;
+  width: 100%;
+  padding: 0 12.5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  color: #FFBC0D;
+  border: none;
 }
