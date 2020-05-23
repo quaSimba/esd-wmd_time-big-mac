@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8">
     <title>Time is Big Mac</title>
     <meta name="description" content="While performing identical tasks around the world,McDonald’s employees hold very different life standards. This gap resonates the growth of wealthy countries and the stagnation of poor ones. -Mind this gap.">
@@ -13,32 +13,50 @@
 
     <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="css/normalize.css"/>
-    <link rel="stylesheet" href="css/skeleton.css"/>
-    <link rel="stylesheet" href="css/custom.css"/>
-    <link rel="stylesheet" type="text/css" href="css/fullpage.css"/>
-    
-   <!-- JS
+    <link rel="stylesheet" href="css/normalize.css" />
+    <!--<link rel="stylesheet" href="css/skeleton.css" />-->
+    <link rel="stylesheet" type="text/css" href="css/fullpage.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+
+    <!-- JS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script type="text/javascript" src="./js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="js/fullpage.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
 
     <!-- Favicon 32x32px PNG
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="icon" type="image/png" href="">
 
-     <!-- Fonts
+    <!-- Fonts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+  </head>
 
-<body>
-    <div class="container u-max-full-width">
-        <div class="row" id="head">
-            <div class="columns twelve">
-            </div>
+  <body>
+    <div class=" u-max-full-width" id="fullpage">
+      <div class="section">
+        <div class="content" id="upper-content">
+          <div class="row header">
+            <img src="./resources/img/logo.png" alt="website-logo" id="logo">
+            <h1 id="slogan">Time is Big Mac</h1>
+            <img src="./resources/img/info_icon.svg" alt="site description" id="info-icon">
+          </div>
+          <div class="row">
+            <p>[This is examplatory text for the upper part of the screen]</p>
+          </div>
         </div>
+        <div class="content" id="lower-content">
+          <div class="row">
+            <p>[This is examplatory text for the lower part of the screen]</p>
+          </div>
+          <div class="row button-wrapper">
+            <button type="button" name="button">This is a button</button>
+          </div>
+        </div>
+      </div>
     </div>
-    
-</body>
+
+  </body>
 
 </html>

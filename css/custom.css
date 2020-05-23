@@ -1,9 +1,63 @@
 Body {
-    font-family: 'Inter', sans-serif;
-    color: #515151;
+  font-family: 'Inter', sans-serif;
+  color: #515151;
 }
 
 h1 {
-    font-family: 'Roboto Slab', serif;
-    color: #FFBC0D;
+  font-family: 'Roboto Slab', serif;
+  color: #FFBC0D;
+}
+
+.content {
+  padding: 0 12.5%;
+  width: 75%;
+}
+
+#upper-content>.row {
+  float: left;
+}
+
+#lower-content {
+  position: absolute;
+  bottom: 30px;
+}
+
+.row {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.header {
+  margin-top: 0;
+}
+
+.header>* {
+  float: left;
+}
+
+#logo {
+  width: 60px;
+}
+
+#slogan {
+  max-width: 50%;
+  margin: 20px 15px 0;
+  font-size: 12pt;
+}
+
+#info-icon {
+  max-width: 25px;
+  float: right;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 319px) {
+  #logo {
+    min-width: 30px;
+    width: 25%;
+  }
+
+  #slogan {
+    display: none;
+  }
 }
