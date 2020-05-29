@@ -1,3 +1,4 @@
+/* General styles */
 body {
   font-family: 'Roboto', sans-serif;
   color: #515151;
@@ -14,11 +15,11 @@ h1 {
   width: 75%;
 }
 
-#upper-content>.row {
+#upper-panel>.row {
   float: left;
 }
 
-#lower-content {
+#lower-panel {
   position: absolute;
   bottom: 40px;
 }
@@ -34,6 +35,10 @@ h1 {
 
 .header>* {
   float: left;
+}
+
+.ajax-text {
+  margin-top: 0;
 }
 
 #logo {
@@ -74,4 +79,33 @@ button {
   text-align: center;
   color: #FFBC0D;
   border: none;
+}
+
+/* Background burger style */
+.background {
+  width: 100%;
+  position: absolute;
+  z-index: -999;
+  margin: auto;
+  left: -9999px;
+  right: -9999px;
+}
+
+#burger {
+  background-image: url("../resources/img/burger@3x.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.macro-view {
+  height: 70vh;
+  top: -270px;
+}
+
+.micro-view {
+  height: 140vh;
+  top: -270px;
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
 }
