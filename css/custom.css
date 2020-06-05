@@ -10,7 +10,7 @@ h1 {
   color: #FFBC0D;
 }
 
-.content {
+#upper-panel {
   padding: 0 12.5%;
   width: 75%;
 }
@@ -21,12 +21,15 @@ h1 {
 
 #lower-panel {
   position: absolute;
-  bottom: 40px;
+  bottom: 0;
+  width: 100%;
+  height: 70vh;
 }
 
 .row {
   margin-top: 40px;
   width: 100%;
+  height: 100%;
 }
 
 .header {
@@ -82,25 +85,54 @@ button {
 }
 
 /* Background burger style */
-.background {
-  width: 100%;
-  position: absolute;
-  z-index: -999;
-  margin: auto;
-  left: -9999px;
-  right: -9999px;
-}
+.background {}
 
-#burger {
+#burger-flags {
   background-image: url("../resources/img/burger@3x.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+}
+
+.flag {
+  width: 50px;
+  position: absolute;
+}
+
+/* Positioning each flag */
+#flag-US {
+  left: 13%;
+  top: 2%;
+}
+
+#flag-ME {
+  left: 17%;
+  top: 20%;
+}
+
+#flag-IT {
+  left: 45%;
+  top: 0;
+}
+
+#flag-ZA {
+  left: 45%;
+  top: 25%;
+}
+
+#flag-IN {
+  left: 60%;
+  top: 13%;
+}
+
+#flag-AU {
+  left: 80%;
+  top: 22%;
 }
 
 .macro-view {
-  height: 70vh;
-  top: -270px;
+  height: 100%;
 }
 
 .micro-view {
