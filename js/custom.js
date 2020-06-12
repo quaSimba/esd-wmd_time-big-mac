@@ -13,17 +13,22 @@ function initFullpage() {
     //options here
     autoScrolling: false,
     scrollHorizontally: false,
-    verticalCentered: false
+    verticalCentered: false,
+    responsiveWidth: 0,
+    responsiveHeight: 0,
   });
 
   //methods
-  $.fn.fullpage.setAllowScrolling(false);
+  //$.fn.fullpage.setAllowScrolling(false);
 }
 
 function loadStart() {
-  loadHTML('#upper-text', 'ajax/texts.html #welcome-text');
+  $('#lower-panel').load('ajax/canvas.html', ajaxError(), function() {
+    $('#canvas').on('load', loadScript('js/painting.js'));
+  });
+  /*loadHTML('#upper-text', 'ajax/texts.html #welcome-text');
   loadHTML('#burger-container', 'ajax/burger-background.html #burger-flags');
-  loadScript("js/flag-events.js");
+  loadScript("js/flag-events.js");*/
 }
 
 function loadWelcome() {
@@ -33,7 +38,7 @@ function loadWelcome() {
 
 // method to load external scripts
 function loadScript(url, callback) {
-  jQuery.ajax({
+  $.ajax({
     url: url,
     dataType: 'script',
     success: callback,
@@ -42,7 +47,7 @@ function loadScript(url, callback) {
 }
 
 function loadHTML(target, source, callback) {
-  $(target).load(source, ajaxError());
+  $(target).load(source, ajaxError(), callback);
 }
 
 function ajaxError(response, status, xhr) {

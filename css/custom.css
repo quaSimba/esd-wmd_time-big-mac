@@ -1,5 +1,5 @@
 /* General styles */
-body {
+html, body {
   font-family: 'Roboto', sans-serif;
   color: #515151;
 }
@@ -140,4 +140,26 @@ button {
   top: -270px;
   filter: blur(6px);
   -webkit-filter: blur(6px);
+}
+
+/* Style canvas for burger painting, not possible to do it responsively */
+#canvas-wrapper {
+  width: 240px;
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  border: 5px dashed #00000030;
+  border-radius: 15px;
+}
+
+#clear-canvas_button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 18px;
 }
