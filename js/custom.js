@@ -23,12 +23,12 @@ function initFullpage() {
 }
 
 function loadStart() {
-  $('#lower-panel').load('ajax/canvas.html', ajaxError(), function() {
+  /*$('#lower-panel').load('ajax/canvas.html', ajaxError(), function() {
     $('#canvas').on('load', loadScript('js/painting.js'));
-  });
-  /*loadHTML('#upper-text', 'ajax/texts.html #welcome-text');
+  });*/
+  loadHTML('#upper-text', 'ajax/texts.html #welcome-text');
   loadHTML('#burger-container', 'ajax/burger-background.html #burger-flags');
-  loadScript("js/flag-events.js");*/
+  loadScript("js/flag-events.js");
 }
 
 function loadWelcome() {
