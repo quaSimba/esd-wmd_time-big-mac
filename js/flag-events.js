@@ -3,7 +3,10 @@ $("input.flag").on('click', function(event) {
   /* Act on the event */
   switch (event.target.id) {
     case 'flag-US':
-      country = 'America';
+          country = 'America';
+          greetingFormular = 'Hey';
+          salary = '9.03';
+          employeeNumber = '210,001';
       break;
     case 'flag-ME':
       country = 'Mexico';

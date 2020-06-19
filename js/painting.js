@@ -1,7 +1,7 @@
 // based on http://www.tricedesigns.com/2012/01/04/sketching-with-html5-canvas-and-brush-images/, enriched by Simon with touch support and colour change
 
 var brush = new Image();
-var brushes = ['/resources/img/texture_brush-1.png', '/resources/img/texture_brush-2.png', '/resources/img/texture_brush-3.png', '/resources/img/texture_brush-4.png', '/resources/img/texture_brush-1.png', '/resources/img/texture_brush-2.png', '/resources/img/texture_brush-4.png', '/resources/img/texture_brush-1.png'];
+var brushes = ['resources/img/texture_brush-1.png', 'resources/img/texture_brush-2.png', 'resources/img/texture_brush-3.png', 'resources/img/texture_brush-4.png', 'resources/img/texture_brush-1.png', 'resources/img/texture_brush-2.png', 'resources/img/texture_brush-4.png', 'resources/img/texture_brush-1.png'];
 var strokeCounter = 0;
 brush.src = brushes[strokeCounter];
 

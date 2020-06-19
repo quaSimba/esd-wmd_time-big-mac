@@ -3,10 +3,14 @@ $(document).ready(
   function() {
     initFullpage();
     loadStart();
+      //loadPainting();
   }
 );
 
 var country;
+var greetingFormular;
+var salary;
+var employeeNumber;
 
 function initFullpage() {
   $('#fullpage').fullpage({
@@ -33,9 +37,20 @@ function loadStart() {
 
 function loadWelcome() {
   $('#upper-text').empty();
-  $('#lower-panel').html("Welcome to McDonald's " + country);
+  $('#lower-panel').html("<h1>Welcome to McDonald's " + country + greetingFormular + "</h1>");
 }
 
+function loadInfo() {
+  $('#lower-text').empty();
+  loadHTML('#lower-text', 'ajax/texts.html #info-text');
+}
+
+function loadPainting(){
+  $('#lower-text').empty();
+  $('#lower-panel').load('ajax/canvas.html', ajaxError(), function() {
+    $('#canvas').on('load', loadScript('js/painting.js'));
+  });
+}
 // method to load external scripts
 function loadScript(url, callback) {
   $.ajax({
