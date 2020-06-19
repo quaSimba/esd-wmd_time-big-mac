@@ -19,7 +19,7 @@ function initFullpage() {
   });
 
   //methods
-  //$.fn.fullpage.setAllowScrolling(false);
+  $.fn.fullpage.setAllowScrolling(false);
 }
 
 function loadStart() {
