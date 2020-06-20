@@ -25,7 +25,11 @@ function initFullpage() {
 }
 
 function loadStart() {
+<<<<<<< HEAD
   loadHTML('#upper-content', 'ajax/texts.html #welcome-text');
+=======
+  loadHTML('#upper-text', 'ajax/texts.html #welcome-text');
+>>>>>>> 63b77382ea4b12146f7e1d12a57c97a796a6fe5e
   loadHTML('#burger-container', 'ajax/burger-background.html #burger-flags');
   loadScript("js/flag-events.js");
 }
@@ -36,7 +40,11 @@ function loadWelcome() {
 }
 
 function loadPainting() {
+<<<<<<< HEAD
   $('#lower-content').load('ajax/canvas.html', ajaxError(), function() {
+=======
+  $('#lower-text').load('ajax/canvas.html', ajaxError(), function() {
+>>>>>>> 63b77382ea4b12146f7e1d12a57c97a796a6fe5e
     $('#canvas').on('load', loadScript('js/painting.js'));
   });
 }
