@@ -3,6 +3,7 @@ $(document).ready(
   function() {
     initFullpage();
     loadStart();
+    // loadPainting();
   }
 );
 
@@ -20,12 +21,10 @@ function initFullpage() {
 
   //methods
   $.fn.fullpage.setAllowScrolling(false);
+  $.fn.fullpage.setKeyboardScrolling(false);
 }
 
 function loadStart() {
-  /*$('#lower-panel').load('ajax/canvas.html', ajaxError(), function() {
-    $('#canvas').on('load', loadScript('js/painting.js'));
-  });*/
   loadHTML('#upper-text', 'ajax/texts.html #welcome-text');
   loadHTML('#burger-container', 'ajax/burger-background.html #burger-flags');
   loadScript("js/flag-events.js");
@@ -34,6 +33,12 @@ function loadStart() {
 function loadWelcome() {
   $('#upper-text').empty();
   $('#lower-panel').html("Welcome to McDonald's " + country);
+}
+
+function loadPainting() {
+  $('#lower-text').load('ajax/canvas.html', ajaxError(), function() {
+    $('#canvas').on('load', loadScript('js/painting.js'));
+  });
 }
 
 // method to load external scripts
