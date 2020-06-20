@@ -26,6 +26,8 @@ h1 {
   height: 70vh;
 }
 
+#lower-content {}
+
 .row {
   margin-top: 40px;
   width: 100%;
@@ -85,7 +87,9 @@ button {
 }
 
 /* Background burger style */
-.background {}
+#burger-container {
+  position: absolute;
+}
 
 #burger-flags {
   background-image: url("../resources/img/burger@3x.png");

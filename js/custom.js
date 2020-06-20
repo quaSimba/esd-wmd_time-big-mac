@@ -2,8 +2,8 @@
 $(document).ready(
   function() {
     initFullpage();
-    loadStart();
-    // loadPainting();
+    //loadStart();
+    loadPainting();
   }
 );
 
@@ -36,6 +36,8 @@ function loadWelcome() {
 }
 
 function loadPainting() {
+  $('#lower-content').empty();
+  $('#lower-content').removeAttr('hidden');
   $('#lower-content').load('ajax/canvas.html', ajaxError(), function() {
     $('#canvas').on('load', loadScript('js/painting.js'));
   });
