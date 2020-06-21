@@ -2,12 +2,15 @@
 $(document).ready(
   function() {
     initFullpage();
-    //loadStart();
-    loadPainting();
+    loadStart();
+      //loadPainting();
   }
 );
 
 var country;
+var greetingFormular;
+var salary;
+var employeeNumber;
 
 function initFullpage() {
   $('#fullpage').fullpage({
@@ -31,8 +34,13 @@ function loadStart() {
 }
 
 function loadWelcome() {
-  $('#upper-content').empty();
-  $('#lower-panel').html("Welcome to McDonald's " + country);
+  $('#upper-text').empty();
+  $('#lower-panel').html("<h1>" + greetingFormular +  "<br/>employee " + employeeNumber + "</h1>\n<p>Welcome to McDonald's " + country +".</p>\n<p>Your McPay is " + salary + " per hour.<br/>Happy first McDay!</p>\n<p>Tap to sign</p>");
+}
+
+function loadInfo() {
+  $('#lower-text').empty();
+  loadHTML('#lower-text', 'ajax/texts.html #info-text');
 }
 
 function loadPainting() {

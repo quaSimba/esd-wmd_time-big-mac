@@ -10,6 +10,10 @@ h1 {
   color: #FFBC0D;
 }
 
+a {
+   color: #FFBC0D; 
+}
+
 #upper-panel {
   padding: 0 12.5%;
   width: 75%;
@@ -85,6 +89,32 @@ button {
   color: #FFBC0D;
   border: none;
 }
+
+/* info text background */
+#info-text {
+  background-image: url("../resources/img/bg_ketchup-1.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 390px;
+  padding: 60px 25px;
+  color:  whitesmoke;
+  
+}
+
+#info-links{
+  position: absolute;
+  bottom: 0;
+    
+}
+    
+/* Lower panel style */
+
+
 
 /* Background burger style */
 #burger-container {
