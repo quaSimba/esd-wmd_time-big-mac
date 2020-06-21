@@ -37,7 +37,7 @@ function loadStart() {
 
 function loadWelcome() {
   $('#upper-text').empty();
-  $('#lower-panel').html("<h1>Welcome to McDonald's " + country + greetingFormular + "</h1>");
+  $('#lower-panel').html("<h1>" + greetingFormular +  "<br/>employee " + employeeNumber + "</h1>\n<p>Welcome to McDonald's " + country +".</p>\n<p>Your McPay is " + salary + " per hour.<br/>Happy first McDay!</p>\n<p>Tap to sign</p>");
 }
 
 function loadInfo() {
