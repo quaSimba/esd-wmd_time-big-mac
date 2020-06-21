@@ -36,11 +36,17 @@ function loadWelcome() {
 }
 
 function loadPainting() {
+  $('#logo-big').attr('id', 'logo-small');
+  $('#slogan').attr('hidden', 'true');
+  $('#info-icon').css('margin-top', '10px');
+  $('#upper-content').empty();
+  loadHTML('#upper-content', 'ajax/texts.html #new-order-text');
   $('#lower-content').empty();
   $('#lower-content').removeAttr('hidden');
   $('#lower-content').load('ajax/canvas.html', ajaxError(), function() {
     $('#canvas').on('load', loadScript('js/painting.js'));
   });
+  loadHTML('#burger-container', 'ajax/burger-background.html #burger-patty');
 }
 
 // method to load external scripts
