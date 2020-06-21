@@ -11,6 +11,7 @@ var country;
 var greetingFormular;
 var salary;
 var employeeNumber;
+var isInfoLoaded = 0;
 
 function initFullpage() {
   $('#fullpage').fullpage({
@@ -34,13 +35,20 @@ function loadStart() {
 }
 
 function loadWelcome() {
-  $('#upper-text').empty();
-  $('#lower-panel').html("<h1>" + greetingFormular +  "<br/>employee " + employeeNumber + "</h1>\n<p>Welcome to McDonald's " + country +".</p>\n<p>Your McPay is " + salary + " per hour.<br/>Happy first McDay!</p>\n<p>Tap to sign</p>");
+  $('#welcome-text').empty();
+  $('#lower-panel').html("<div class\=\"contract\"><h1>" + greetingFormular +  "<br/>employee " + employeeNumber + "</h1>\n<p>Welcome to McDonald's " + country +".</p>\n<p>Your McPay is " + salary + " per hour.<br/>Happy first McDay!</p>\n<p>Tap to sign</p><div>");
 }
 
 function loadInfo() {
-  $('#lower-text').empty();
-  loadHTML('#lower-text', 'ajax/texts.html #info-text');
+    if (isInfoLoaded == 0) {
+        $('#lower-text').empty();
+        loadHTML('#lower-text', 'ajax/texts.html #info-text');
+        isInfoLoaded = 1;
+    } 
+    else {
+        $('#lower-text').empty();
+        isInfoLoaded = 0;
+    }
 }
 
 function loadPainting() {
