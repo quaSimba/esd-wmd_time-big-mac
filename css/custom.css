@@ -71,7 +71,7 @@ p {
   position: absolute;
   bottom: 0;
   width: 100%;
-  z-index: -1;
+  z-index: 1;
 }
 
 .lower-wrapper {
@@ -104,31 +104,44 @@ button {
 }
 
 /* Sauce backgrounds */
+#mayo-1 {
+  background-image: url("../../resources/img/bg_mayo-1.png");
+}
+
 #mayo-2 {
   background-image: url("../../resources/img/bg_mayo-2.png");
-  background-position: top;
 }
 
 /* Background burger style */
 #burger-container {
   position: absolute;
-  top: -110px;
 }
 
 .background {
-  background-position: center;
+  height: 100%;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  z-index: -1;
+}
+
+.micro-view {
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+  transform: scale(110%);
 }
 
 #burger-flags {
   background-image: url("../resources/img/burger@3x.png");
+  background-size: 110%;
+  height: 320px;
+  top: -340px;
 }
 
 #burger-patty {
   background-image: url("../../resources/img/burger_Top-Patty.png");
-  background-size: 120vw;
+  background-size: 100%;
 }
 
 .flag {
@@ -167,17 +180,6 @@ button {
   top: 22%;
 }
 
-.macro-view {
-  height: 100%;
-}
-
-.micro-view {
-  height: 140vh;
-  top: -270px;
-  filter: blur(6px);
-  -webkit-filter: blur(6px);
-}
-
 /* Style canvas for burger painting, not possible to do it responsively */
 #canvas-wrapper {
   position: relative;
@@ -192,11 +194,12 @@ canvas {
 
 #clear-canvas_button {
   position: absolute;
-  top: 60px;
+  top: 10px;
   right: 15px;
   width: 18px;
 }
 
 #painting-instructions {
   margin: 0;
+  height: 40px;
 }

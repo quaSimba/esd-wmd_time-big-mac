@@ -2,8 +2,8 @@
 $(document).ready(
   function() {
     initFullpage();
-    //loadStart();
-    loadPainting();
+    loadStart();
+    //loadPainting();
   }
 );
 
