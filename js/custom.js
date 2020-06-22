@@ -35,8 +35,12 @@ function loadStart() {
 }
 
 function loadWelcome() {
-  $('#welcome-text').empty();
-  $('#lower-panel').html("<div class\=\"contract\"><h1>" + greetingFormular + "<br/>employee " + employeeNumber + "</h1>\n<p>Welcome to McDonald's " + country + ".</p>\n<p>Your McPay is " + salary + " per hour.<br/>Happy first McDay!</p>\n<p>Tap to sign</p><div>");
+  collapseHeader();
+  $('#upper-content').empty();
+  loadHTML('#lower-content', 'ajax/contract.html', function() {
+    $('.lower-wrapper *:last').before("<h1>" + greetingFormular + "<br/>employee " + employeeNumber + "</h1>\n<p>Welcome to McDonald's " + country + ".</p>\n<p>Your McPay is " + salary + " per hour.<br/>Happy first McDay!</p>\n<p>Tap to sign</p>");
+  });
+  $('#lower-content').removeAttr('hidden');
 }
 
 function loadInfo() {
@@ -51,9 +55,6 @@ function loadInfo() {
 }
 
 function loadPainting() {
-  $('#logo-big').attr('id', 'logo-small');
-  $('#slogan').attr('hidden', 'true');
-  $('#info-icon').css('margin-top', '10px');
   $('#upper-content').empty();
   loadHTML('#upper-content', 'ajax/texts.html #new-order-text');
   $('#lower-content').empty();
@@ -62,6 +63,12 @@ function loadPainting() {
     $('#canvas').on('load', loadScript('js/painting.js'));
   });
   loadHTML('#burger-container', 'ajax/burger-background.html #burger-patty');
+}
+
+function collapseHeader() {
+  $('#logo-big').attr('id', 'logo-small');
+  $('#slogan').attr('hidden', 'true');
+  $('#info-icon').css('margin-top', '10px');
 }
 
 // method to load external scripts

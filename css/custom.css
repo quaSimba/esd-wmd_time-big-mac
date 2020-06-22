@@ -61,6 +61,8 @@ p {
 #upper-panel {
   padding: 0 12.5vw;
   width: 75%;
+  position: relative;
+  z-index: 999;
 }
 
 #upper-panel>.row {
@@ -71,6 +73,7 @@ p {
   position: absolute;
   bottom: 0;
   width: 100%;
+  min-height: 200px;
   z-index: 1;
 }
 
@@ -101,6 +104,7 @@ button {
   text-align: center;
   color: #FFBC0D;
   border: none;
+  margin-top: 16px;
 }
 
 /* info text background */
@@ -123,16 +127,26 @@ button {
   bottom: 0;
 }
 
-/* info contract background */
-.contract {
-  background-image: url("../resources/img/bg_mayo-2.png");
+/* Background burger style */
+#burger-container {
+  height: 320px;
+  bottom: 0;
+}
+
+/* General background rules */
+.background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -999;
+}
+
+.background-image {
   background-position: top;
   background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  left: 0;
-  z-index: 1;
-  padding: 20px;
+  background-size: cover;
+  position: relative;
+  height: 100%;
 }
 
 /* Sauce backgrounds */
@@ -144,36 +158,29 @@ button {
   background-image: url("../../resources/img/bg_mayo-2.png");
 }
 
-/* Background burger style */
-#burger-container {
-  position: absolute;
-}
-
-.background {
-  height: 100%;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  z-index: -1;
-}
-
-.micro-view {
-  filter: blur(6px);
-  -webkit-filter: blur(6px);
-  transform: scale(110%);
-}
-
 #burger-flags {
   background-image: url("../resources/img/burger@3x.png");
   background-size: 110%;
-  height: 320px;
-  top: -340px;
 }
 
 #burger-patty {
   background-image: url("../../resources/img/burger_Top-Patty.png");
-  background-size: 100%;
+  background-size: 110%;
+}
+
+@keyframes micro-view-animation {
+  from {
+    transform: scale(100%)
+  }
+
+  to {
+    transform: scale(180%)
+  }
+}
+
+.micro-view {
+  -webkit-animation: micro-view-animation .5s ease-in forwards;
+  animation: micro-view-animation .5s ease-in-out forwards;
 }
 
 .flag {
