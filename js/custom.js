@@ -3,7 +3,7 @@ $(document).ready(
   function() {
     initFullpage();
     loadStart();
-      //loadPainting();
+    //loadPainting();
   }
 );
 
@@ -36,27 +36,32 @@ function loadStart() {
 
 function loadWelcome() {
   $('#welcome-text').empty();
-  $('#lower-panel').html("<div class\=\"contract\"><h1>" + greetingFormular +  "<br/>employee " + employeeNumber + "</h1>\n<p>Welcome to McDonald's " + country +".</p>\n<p>Your McPay is " + salary + " per hour.<br/>Happy first McDay!</p>\n<p>Tap to sign</p><div>");
+  $('#lower-panel').html("<div class\=\"contract\"><h1>" + greetingFormular + "<br/>employee " + employeeNumber + "</h1>\n<p>Welcome to McDonald's " + country + ".</p>\n<p>Your McPay is " + salary + " per hour.<br/>Happy first McDay!</p>\n<p>Tap to sign</p><div>");
 }
 
 function loadInfo() {
-    if (isInfoLoaded == 0) {
-        $('#lower-text').empty();
-        loadHTML('#lower-text', 'ajax/texts.html #info-text');
-        isInfoLoaded = 1;
-    } 
-    else {
-        $('#lower-text').empty();
-        isInfoLoaded = 0;
-    }
+  if (isInfoLoaded == 0) {
+    $('#lower-text').empty();
+    loadHTML('#lower-text', 'ajax/texts.html #info-text');
+    isInfoLoaded = 1;
+  } else {
+    $('#lower-text').empty();
+    isInfoLoaded = 0;
+  }
 }
 
 function loadPainting() {
+  $('#logo-big').attr('id', 'logo-small');
+  $('#slogan').attr('hidden', 'true');
+  $('#info-icon').css('margin-top', '10px');
+  $('#upper-content').empty();
+  loadHTML('#upper-content', 'ajax/texts.html #new-order-text');
   $('#lower-content').empty();
   $('#lower-content').removeAttr('hidden');
   $('#lower-content').load('ajax/canvas.html', ajaxError(), function() {
     $('#canvas').on('load', loadScript('js/painting.js'));
   });
+  loadHTML('#burger-container', 'ajax/burger-background.html #burger-patty');
 }
 
 // method to load external scripts
