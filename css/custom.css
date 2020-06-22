@@ -104,7 +104,7 @@ button {
   text-align: center;
   color: #FFBC0D;
   border: none;
-  margin-top: 16px;
+  margin-top: 30px;
 }
 
 /* info text background */
@@ -222,7 +222,6 @@ button {
 /* Style canvas for burger painting, not possible to do it responsively */
 #canvas-wrapper {
   position: relative;
-  margin-bottom: 30px;
 }
 
 canvas {
@@ -240,5 +239,6 @@ canvas {
 
 #painting-instructions {
   margin: 0;
+  margin-top: 30px;
   height: 40px;
 }

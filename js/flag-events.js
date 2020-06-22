@@ -59,7 +59,7 @@ $("input.flag").on('click', function(event) {
   var zoomY = $('.background-image')[0].getBoundingClientRect().y + ($('.background-image')[0].getBoundingClientRect().height / 2) - selectedFlag[0].getBoundingClientRect().y;
   $('.background-image').animate({
     'left': zoomX - 30,
-    'top': zoomY - 250
+    'top': zoomY - 270
   }, '1s');
   $('.background-image').addClass('micro-view');
 

@@ -34,12 +34,20 @@ function enablePainting() {
 
 function clearPainting() {
   $('#painting-instructions').removeAttr('hidden');
-  $('#serve-button').remove();
+  if ($('#serve-button').length) {
+    $('#serve-button').remove();
+    enablePainting();
+  }
   ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
   hasStroked = false;
   strokeCounter = 0;
   brush.src = brushes[strokeCounter];
-  enablePainting();
+}
+
+function finishPainting() {
+  canvas.off();
+  $('#painting-instructions').attr('hidden', 'true');
+  $('.lower-wrapper').append('<button type="button" name="finish-painting" id="serve-button">Serve it!</button>');
 }
 
 function handleDrawingStart(e) {
@@ -90,10 +98,4 @@ function distanceBetween(point1, point2) {
 
 function angleBetween(point1, point2) {
   return Math.atan2(point2.x - point1.x, point2.y - point1.y);
-}
-
-function finishPainting() {
-  canvas.off();
-  $('#painting-instructions').attr('hidden', 'true');
-  $('.lower-wrapper').append('<button type="button" name="finish-painting" id="serve-button">Serve it!</button>');
 }
