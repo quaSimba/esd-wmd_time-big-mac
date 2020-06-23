@@ -11,6 +11,7 @@ var country;
 var greetingFormular;
 var salary;
 var employeeNumber;
+var tpb;
 var isInfoLoaded = 0;
 
 function initFullpage() {
@@ -43,10 +44,11 @@ function loadWelcome() {
   $('#lower-content').removeAttr('hidden');
 }
 
+
 function loadInfo() {
-  if (isInfoLoaded == 0) {
+    if (isInfoLoaded == 0) {
     $('#lower-text').empty();
-    loadHTML('#lower-text', 'ajax/texts.html #info-text');
+    loadHTML('#lower-text', 'ajax/info.html');
     isInfoLoaded = 1;
   } else {
     $('#lower-text').empty();
