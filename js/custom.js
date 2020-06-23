@@ -46,12 +46,16 @@ function loadWelcome() {
 
 
 function loadInfo() {
-    if (isInfoLoaded == 0) {
-    $('#lower-text').empty();
-    loadHTML('#lower-text', 'ajax/info.html');
+  if (isInfoLoaded == 0) {
+    $('#lower-content').removeAttr('hidden');
+    $('#upper-content').attr('hidden', 'true');
+    $('#lower-content').empty();
+    loadHTML('#lower-content', 'ajax/info.html');
     isInfoLoaded = 1;
   } else {
-    $('#lower-text').empty();
+    $('#lower-content').attr('hidden', 'true');
+    $('#upper-content').removeAttr('hidden');
+    $('#lower-content').empty();
     isInfoLoaded = 0;
   }
 }
