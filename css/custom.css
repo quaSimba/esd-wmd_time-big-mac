@@ -145,15 +145,24 @@ button {
 
 /* Sauce backgrounds */
 #mayo-1 {
-  background-image: url("../../resources/img/bg_mayo-1.png");
+  background-image: url("../resources/img/bg_mayo-1.png");
 }
 
 #mayo-2 {
-  background-image: url("../../resources/img/bg_mayo-2.png");
+  background-image: url("../resources/img/bg_mayo-2.png");
 }
 
 #ketchup {
   background-image: url("../resources/img/bg_ketchup-1.png");
+}
+
+#mayo-3 {
+  background-image: url("../resources/img/bg_mayo-3.png");
+}
+
+
+#mayo-4 {
+  background-image: url("../resources/img/bg_mayo-3.png");
 }
 
 #burger-flags {
@@ -162,7 +171,7 @@ button {
 }
 
 #burger-patty {
-  background-image: url("../../resources/img/burger_Top-Patty.png");
+  background-image: url("../resources/img/burger_Top-Patty.png");
   background-size: 110%;
 }
 
