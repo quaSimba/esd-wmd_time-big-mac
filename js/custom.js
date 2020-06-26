@@ -75,6 +75,7 @@ function niceTry() {
     $('#upper-content').empty();
     loadHTML('#lower-content', 'ajax/nice-try.html', function(){
       $('#cost').html("<p>One BigMac in " + country + " will cost you " + tpb + " hours of work. <br/>Better get to it</p>");
+
         
     });
     loadHTML('#burger-container', 'ajax/burger-background.html #middle-bun');
@@ -88,6 +89,7 @@ function openChart(){
     loadHTML('#burger-container', 'ajax/burger-background.html #bottom-bun');
     
 }
+
 
 function collapseHeader() {
   $('#logo-big').attr('id', 'logo-small');
