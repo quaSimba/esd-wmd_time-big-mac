@@ -160,7 +160,6 @@ button {
   background-image: url("../resources/img/bg_mayo-3.png");
 }
 
-
 #mayo-4 {
   background-image: url("../resources/img/bg_mayo-3.png");
 }
@@ -173,6 +172,19 @@ button {
 #burger-patty {
   background-image: url("../resources/img/burger_Top-Patty.png");
   background-size: 110%;
+}
+
+.french-fry {
+  background-repeat: no-repeat;
+  position: relative;
+  box-sizing: border-box;
+  width: 100vw;
+  left: -12.5vw;
+  padding: 0 12.5vw;
+  height: 30px;
+  line-height: 30px;
+  color: #8B6157;
+  filter: drop-shadow(0 3px 5px #00000030);
 }
 
 @keyframes micro-view-animation {

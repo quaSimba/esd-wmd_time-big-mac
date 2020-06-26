@@ -2,16 +2,18 @@
 $(document).ready(
   function() {
     initFullpage();
-    loadStart();
+    //loadStart();
     //loadPainting();
+    $('#lower-content').removeAttr('hidden');
+    loadNiceTry();
   }
 );
 
-var country;
-var greetingFormular;
-var salary;
-var employeeNumber;
-var tpb;
+var country = "Mid world";
+var greetingFormular = "Long days and pleasant nights";
+var salary = "1€";
+var employeeNumber = "1";
+var tpb = 12000;
 var isInfoLoaded = 0;
 
 function initFullpage() {
@@ -71,22 +73,27 @@ function loadPainting() {
   loadHTML('#burger-container', 'ajax/burger-background.html #burger-patty');
 }
 
-function niceTry() {
-    $('#upper-content').empty();
-    loadHTML('#lower-content', 'ajax/nice-try.html', function(){
-      $('#cost *:last').before("<p>One BigMac in" + country + "will cost you" + tpb + "hours of work. <br/>Better get to it</p>");
-        
+function loadNiceTry() {
+  $('#upper-content').empty();
+  loadHTML('#lower-content', 'ajax/nice-try.html', function() {
+    $('#cost').html("<p>One BigMac in " + country + " will cost you " + msToTime(tpb) + " hours of work. <br/>Better get to it</p>");
+    loadScript("js/french-fries.js", function() {
+      $('#home-fry').css('background-image', 'url(' + fryRandomiser() + ')');
+      $('#home-fry').find('.country-display').html(country);
+      $('#home-fry').find('.time-display').html(msToTime(tpb));
+      animateFry($('#home-fry'), tpb);
     });
-    loadHTML('#burger-container', 'ajax/burger-background.html #burger_middle-bun');
- } 
+  });
+  loadHTML('#burger-container', 'ajax/burger-background.html #burger_middle-bun');
+}
 
-function openChart(){
-     $('#upper-content').empty();
-    loadHTML('#lower-content', 'ajax/chart.html', function(){
+function loadCharts() {
+  $('#upper-content').empty();
+  loadHTML('#lower-content', 'ajax/chart.html', function() {
 
-    });
-    loadHTML('#burger-container', 'ajax/burger-background.html #burger_bottom-bun');
-    
+  });
+  loadHTML('#burger-container', 'ajax/burger-background.html #burger_bottom-bun');
+
 }
 
 function collapseHeader() {
@@ -94,6 +101,8 @@ function collapseHeader() {
   $('#slogan').attr('hidden', 'true');
   $('#info-icon').css('margin-top', '10px');
 }
+
+// helper functions:
 
 // method to load external scripts
 function loadScript(url, callback) {
@@ -114,4 +123,18 @@ function ajaxError(response, status, xhr) {
     var msg = "Sorry but there was an error: ";
     console.log(msg + xhr.status + " " + xhr.statusText);
   }
+}
+
+// from https://coderwall.com/p/wkdefg/converting-milliseconds-to-hh-mm-ss-mmm
+function msToTime(duration) {
+  var milliseconds = parseInt((duration % 1000) / 100),
+    seconds = parseInt((duration / 1000) % 60),
+    minutes = parseInt((duration / (1000 * 60)) % 60),
+    hours = parseInt((duration / (1000 * 60 * 60)) % 24);
+
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+  return hours + ":" + minutes + ":" + seconds;
 }

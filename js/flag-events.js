@@ -9,7 +9,7 @@ $("input.flag").on('click', function(event) {
       greetingFormular = 'Hey';
       salary = '9.03';
       employeeNumber = '#210,001';
-      tpb = '00:36:61';
+      tpb = 2196000;
       selectedFlag = flags.splice(0, 1);
       break;
     case 'flag-ME':
@@ -17,7 +17,7 @@ $("input.flag").on('click', function(event) {
       greetingFormular = 'Hola';
       salary = '1';
       employeeNumber = '#11,501';
-      tpb = '02:28:00';
+      tpb = 10080000;
       selectedFlag = flags.splice(1, 1);
       break;
     case 'flag-IT':
@@ -25,7 +25,7 @@ $("input.flag").on('click', function(event) {
       greetingFormular = 'Ciao';
       salary = '9.2';
       employeeNumber = '#3,045';
-      tpb = '00:30:65';
+      tpb = 1839600;
       selectedFlag = flags.splice(2, 1);
       break;
     case 'flag-ZA':
@@ -33,7 +33,7 @@ $("input.flag").on('click', function(event) {
       greetingFormular = 'Hallo';
       salary = '0.97';
       employeeNumber = '#10,001';
-      tpb = '03:17:94';
+      tpb = 11880000;
       selectedFlag = flags.splice(3, 1);
       break;
     case 'flag-IN':
@@ -41,7 +41,7 @@ $("input.flag").on('click', function(event) {
       greetingFormular = 'Namaste';
       salary = '0.66';
       employeeNumber = '#4,001';
-      tpb = '03:35:45';
+      tpb = 12927600;
       selectedFlag = flags.splice(4, 1);
       break;
     case 'flag-AU':
@@ -49,7 +49,7 @@ $("input.flag").on('click', function(event) {
       greetingFormular = 'G׳day';
       salary = '13.4';
       employeeNumber = '#90,001';
-      tpb = '00:17:46';
+      tpb = 1047600;
       selectedFlag = flags.splice(5, 1);
       break;
     default:
