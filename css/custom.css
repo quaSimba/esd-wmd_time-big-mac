@@ -170,20 +170,42 @@ button {
   background-size: 110%;
 }
 
+#top-bun {
+  background-image: url("../resources/img/burger_Top-Bun.png");
+  background-size: 110%;
+  top:0;
+}
+
 #burger-patty {
   background-image: url("../resources/img/burger_Top-Patty.png");
-  background-size: 110%;
+  background-size: 190%;
+  top: -60px;
+}
+
+#middle-bun {
+  background-image: url("../resources/img/burger_Middle-Bun.png");
+  background-size: 190%;
+  top: -60px;
+
+}
+
+#bottom-bun {
+  background-image: url("../resources/img/burger_Bottom-Bun.png");
+  background-size: 190%;
+  top: -60px;
+    
 }
 
 @keyframes micro-view-animation {
   from {
-    transform: scale(100%)
+    transform: scale(100%);
   }
 
   to {
-    transform: scale(180%)
+    transform: scale(180%);
   }
 }
+
 
 .micro-view {
   -webkit-animation: micro-view-animation .5s ease-in forwards;

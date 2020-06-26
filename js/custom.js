@@ -68,16 +68,16 @@ function loadPainting() {
   $('#lower-content').load('ajax/canvas.html', ajaxError(), function() {
     $('#canvas').on('load', loadScript('js/painting.js'));
   });
-  loadHTML('#burger-container', 'ajax/burger-background.html #burger-patty');
+  loadHTML('#burger-container', 'ajax/burger-background.html #burger-patty')    
 }
 
 function niceTry() {
     $('#upper-content').empty();
     loadHTML('#lower-content', 'ajax/nice-try.html', function(){
-      $('#cost *:last').before("<p>One BigMac in" + country + "will cost you" + tpb + "hours of work. <br/>Better get to it</p>");
+      $('#cost').html("<p>One BigMac in " + country + " will cost you " + tpb + " hours of work. <br/>Better get to it</p>");
         
     });
-    loadHTML('#burger-container', 'ajax/burger-background.html #burger_middle-bun');
+    loadHTML('#burger-container', 'ajax/burger-background.html #middle-bun');
  } 
 
 function openChart(){
@@ -85,7 +85,7 @@ function openChart(){
     loadHTML('#lower-content', 'ajax/chart.html', function(){
 
     });
-    loadHTML('#burger-container', 'ajax/burger-background.html #burger_bottom-bun');
+    loadHTML('#burger-container', 'ajax/burger-background.html #bottom-bun');
     
 }
 
