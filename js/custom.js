@@ -71,6 +71,25 @@ function loadPainting() {
   loadHTML('#burger-container', 'ajax/burger-background.html #burger-patty');
 }
 
+function niceTry() {
+    $('#upper-content').empty();
+    loadHTML('#lower-content', 'ajax/nice-try.html', function(){
+      $('#cost').html("One BigMac in " + country + " will cost you " + tpb + " hours of work. <br/>Better get to it");
+        
+    });
+    loadHTML('#burger-container', 'ajax/burger-background.html #burger_middle-bun');
+ } 
+
+function openChart(){
+     $('#upper-content').empty();
+    loadHTML('#lower-content', 'ajax/chart.html', function(){
+
+    });
+    loadHTML('#burger-container', 'ajax/burger-background.html #burger_bottom-bun');
+    
+}
+
+
 function collapseHeader() {
   $('#logo-big').attr('id', 'logo-small');
   $('#slogan').attr('hidden', 'true');
