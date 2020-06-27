@@ -6,9 +6,9 @@ $(document).ready(
     //loadPainting();
     //loadContract();
     $('#lower-content').removeAttr('hidden');
-    //loadNiceTry();
     loadScript("js/french-fries.js", function() {
-      loadChart();
+      loadNiceTry();
+      //loadChart();
     });
   }
 );

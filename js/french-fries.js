@@ -19,7 +19,7 @@ function animateFry(fry, duration, accelerationFactor) {
   var timeRemaining = duration - fries[fry.attr('id')].timeElapsed;
 
   interval = setInterval(function() {
-    if (timeRemaining >= 1000) {
+    if (timeRemaining > 1000) {
       timeRemaining -= 1000;
       tpbField.html(msToTime(timeRemaining));
       fries[fry.attr('id')].timeElapsed += 1000;
@@ -32,10 +32,7 @@ function animateFry(fry, duration, accelerationFactor) {
     backgroundPosition: '0px'
   }, {
     duration: timeRemaining / accelerationFactor,
-    step: function(now, fx) {
-      //fries[fry.attr('id')].progress = fx.pos;
-      //console.log(fries[fry.attr('id')].timeElapsed);
-    },
+    step: function(now, fx) {},
     easing: 'linear',
     done: function() {
       fry.find('.tpb-field').html("finished!");
@@ -53,7 +50,6 @@ function fryFry(target, country) {
   target.css('background-image', 'url(' + fryRandomiser() + ')');
   target.css('background-position', -target.outerWidth());
   fries[target.attr('id')] = {
-    'progress': 0,
     'timeElapsed': 0
   };
   animateFry(target, country.tpb, 1);
