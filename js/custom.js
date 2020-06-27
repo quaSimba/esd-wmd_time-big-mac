@@ -142,10 +142,7 @@ function loadNiceTry() {
     });
     rePlaceholders([homeCountry]);
     loadScript("js/french-fries.js", function() {
-      $('#home-fry').css('background-image', 'url(' + fryRandomiser() + ')');
-      $('#home-fry').find('.homeCountry.country-display').html(homeCountry.name);
-      $('#home-fry').find('.time-display').html(msToTime(homeCountry.tpb));
-      animateFry($('#home-fry'), homeCountry.tpb);
+
     });
   });
   loadHTML('#burger-container', 'ajax/burger-background.html #burger_middle-bun');
@@ -160,8 +157,8 @@ function loadChart() {
     rePlaceholders([homeCountry]);
     loadScript("js/french-fries.js", function() {
       $('#home-fry').css('background-image', 'url(' + fryRandomiser() + ')');
-      $('#home-fry').find('.homeCountry.country-display').html(homeCountry.name);
-      $('#home-fry').find('.time-display').html(msToTime(homeCountry.tpb));
+      $('#home-fry').find('.homeCountry.country-field').html(homeCountry.name);
+      $('#home-fry').find('.time-field').html(msToTime(homeCountry.tpb));
       animateFry($('#home-fry'), homeCountry.tpb);
     });
   });
@@ -171,19 +168,19 @@ function loadChart() {
 
 function rePlaceholders(replaceCountries) {
   replaceCountries.forEach(function(country) {
-    $('.' + country.code + '.country-display').each(function() {
+    $('.' + country.code + '.country-field').each(function() {
       $(this).html(country.name);
     });
-    $('.' + country.code + '.greeting-display').each(function() {
+    $('.' + country.code + '.greeting-field').each(function() {
       $(this).html(country.greetingFormular);
     });
-    $('.' + country.code + '.salary-display').each(function() {
+    $('.' + country.code + '.salary-field').each(function() {
       $(this).html(country.salary);
     });
-    $('.' + country.code + '.employee-display').each(function() {
+    $('.' + country.code + '.employee-field').each(function() {
       $(this).html(country.employeeNumber);
     });
-    $('.' + country.code + '.tpb-display').each(function() {
+    $('.' + country.code + '.tpb-field').each(function() {
       $(this).html(msToTime(country.tpb));
     });
 

@@ -11,7 +11,7 @@ function fryRandomiser() {
 
 function animateFry(fry, time) {
   var timeRemaining = time;
-  var timeDisplay = fry.find('.time-display');
+  var timeDisplay = fry.find('.time-field');
   fry.css('background-position', -fry.outerWidth());
 
   var interval = setInterval(function() {
@@ -26,6 +26,13 @@ function animateFry(fry, time) {
   fry.animate({
     backgroundPosition: '0px'
   }, time, 'linear', function() {
-    fry.find('.time-display').html("finished!");
+    fry.find('.time-field').html("finished!");
   });
+}
+
+function fryFry(target, country) {
+  $(target).css('background-image', 'url(' + fryRandomiser() + ')');
+  $('#home-fry').find('.homeCountry.country-field').html(homeCountry.name);
+  $('#home-fry').find('.time-field').html(msToTime(homeCountry.tpb));
+  animateFry($('#home-fry'), homeCountry.tpb);
 }
