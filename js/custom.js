@@ -4,17 +4,10 @@ $(document).ready(
     initFullpage();
     //loadStart();
     //loadPainting();
-<<<<<<< HEAD
     //loadContract();
     $('#lower-content').removeAttr('hidden');
     //loadNiceTry();
     loadChart();
-=======
-    loadContract();
-    $('#lower-content').removeAttr('hidden');
-    //loadNiceTry();
-    //loadChart();
->>>>>>> bf90a5a570a6a8ba26d2077a405fb276eebdf515
   }
 );
 
