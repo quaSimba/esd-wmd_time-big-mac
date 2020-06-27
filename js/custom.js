@@ -4,16 +4,74 @@ $(document).ready(
     initFullpage();
     //loadStart();
     //loadPainting();
+    //loadContract();
     $('#lower-content').removeAttr('hidden');
-    loadNiceTry();
+    //loadNiceTry();
+    loadChart();
   }
 );
 
-var country = "Mid world";
-var greetingFormular = "Long days and pleasant nights";
-var salary = "1€";
-var employeeNumber = "1";
-var tpb = 12000;
+var countries = {
+  "AU": {
+    "code": "country-au",
+    "name": "Australia",
+    "greetingFormular": "G'day",
+    "salary": 13.4,
+    "employeeNumber": "90,001",
+    "tpb": 1047600
+  },
+  "IN": {
+    "code": "country-in",
+    "name": "India",
+    "greetingFormular": "Namaste",
+    "salary": 0.66,
+    "employeeNumber": "#4,001",
+    "tpb": 12927600
+  },
+  "IT": {
+    "code": "country-it",
+    "name": "Italy",
+    "greetingFormular": "Ciao",
+    "salary": 9.2,
+    "employeeNumber": "#3,045",
+    "tpb": 1839600
+  },
+  "ME": {
+    "code": "country-me",
+    "name": "Mexico",
+    "greetingFormular": "Hola",
+    "salary": 1,
+    "employeeNumber": "#11,501",
+    "tpb": 10080000
+  },
+  "MW": {
+    "code": "country-mw",
+    "name": "Mid World",
+    "greetingFormular": "Long days and pleasant nights",
+    "salary": 1,
+    "employeeNumber": "#1",
+    "tpb": 12000
+  },
+  "US": {
+    "code": "country-au",
+    "name": "America",
+    "greetingFormular": "Hey",
+    "salary": 9.03,
+    "employeeNumber": "#210,001",
+    "tpb": 2196000
+  },
+  "ZA": {
+    "code": "country-za",
+    "name": "South Africa",
+    "greetingFormular": "Hallo",
+    "salary": 0.97,
+    "employeeNumber": "#10,001",
+    "tpb": 11880000
+  }
+};
+
+var homeCountry = countries.MW;
+
 var isInfoLoaded = 0;
 
 function initFullpage() {
@@ -37,11 +95,14 @@ function loadStart() {
   loadScript("js/flag-events.js");
 }
 
-function loadWelcome() {
+function loadContract() {
   collapseHeader();
   $('#upper-content').empty();
   loadHTML('#lower-content', 'ajax/contract.html', function() {
-    $('.lower-wrapper *:last').before("<h1>" + greetingFormular + "<br/>employee " + employeeNumber + "</h1>\n<p>Welcome to McDonald's " + country + ".</p>\n<p>Your McPay is " + salary + " per hour.<br/>Happy first McDay!</p>\n<p>Tap to sign</p>");
+    $('.home-country').each(function() {
+      $(this).addClass(homeCountry.code);
+    });
+    rePlaceholders([homeCountry]);
   });
   $('#lower-content').removeAttr('hidden');
 }
@@ -76,24 +137,57 @@ function loadPainting() {
 function loadNiceTry() {
   $('#upper-content').empty();
   loadHTML('#lower-content', 'ajax/nice-try.html', function() {
-    $('#cost').html("<p>One BigMac in " + country + " will cost you " + msToTime(tpb) + " hours of work. <br/>Better get to it</p>");
+    $('.home-country').each(function() {
+      $(this).addClass(homeCountry.code);
+    });
+    rePlaceholders([homeCountry]);
     loadScript("js/french-fries.js", function() {
       $('#home-fry').css('background-image', 'url(' + fryRandomiser() + ')');
-      $('#home-fry').find('.country-display').html(country);
-      $('#home-fry').find('.time-display').html(msToTime(tpb));
-      animateFry($('#home-fry'), tpb);
+      $('#home-fry').find('.homeCountry.country-display').html(homeCountry.name);
+      $('#home-fry').find('.time-display').html(msToTime(homeCountry.tpb));
+      animateFry($('#home-fry'), homeCountry.tpb);
     });
   });
   loadHTML('#burger-container', 'ajax/burger-background.html #burger_middle-bun');
 }
 
-function loadCharts() {
+function loadChart() {
   $('#upper-content').empty();
   loadHTML('#lower-content', 'ajax/chart.html', function() {
-
+    $('.home-country').each(function() {
+      $(this).addClass(homeCountry.code);
+    });
+    rePlaceholders([homeCountry]);
+    loadScript("js/french-fries.js", function() {
+      $('#home-fry').css('background-image', 'url(' + fryRandomiser() + ')');
+      $('#home-fry').find('.homeCountry.country-display').html(homeCountry.name);
+      $('#home-fry').find('.time-display').html(msToTime(homeCountry.tpb));
+      animateFry($('#home-fry'), homeCountry.tpb);
+    });
   });
   loadHTML('#burger-container', 'ajax/burger-background.html #burger_bottom-bun');
 
+}
+
+function rePlaceholders(replaceCountries) {
+  replaceCountries.forEach(function(country) {
+    $('.' + country.code + '.country-display').each(function() {
+      $(this).html(country.name);
+    });
+    $('.' + country.code + '.greeting-display').each(function() {
+      $(this).html(country.greetingFormular);
+    });
+    $('.' + country.code + '.salary-display').each(function() {
+      $(this).html(country.salary);
+    });
+    $('.' + country.code + '.employee-display').each(function() {
+      $(this).html(country.employeeNumber);
+    });
+    $('.' + country.code + '.tpb-display').each(function() {
+      $(this).html(msToTime(country.tpb));
+    });
+
+  });
 }
 
 function collapseHeader() {

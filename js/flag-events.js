@@ -4,53 +4,30 @@ $("input.flag").on('click', function(event) {
   var selectedFlag;
   /* Act on the event */
   switch (event.target.id) {
-    case 'flag-US':
-      country = 'America';
-      greetingFormular = 'Hey';
-      salary = '9.03';
-      employeeNumber = '#210,001';
-      tpb = 2196000;
-      selectedFlag = flags.splice(0, 1);
-      break;
-    case 'flag-ME':
-      country = 'Mexico';
-      greetingFormular = 'Hola';
-      salary = '1';
-      employeeNumber = '#11,501';
-      tpb = 10080000;
-      selectedFlag = flags.splice(1, 1);
-      break;
-    case 'flag-IT':
-      country = 'Italy';
-      greetingFormular = 'Ciao';
-      salary = '9.2';
-      employeeNumber = '#3,045';
-      tpb = 1839600;
-      selectedFlag = flags.splice(2, 1);
-      break;
-    case 'flag-ZA':
-      country = 'South Africa';
-      greetingFormular = 'Hallo';
-      salary = '0.97';
-      employeeNumber = '#10,001';
-      tpb = 11880000;
-      selectedFlag = flags.splice(3, 1);
+
+    case 'flag-AU':
+      homeCountry = countries.AU;
+      selectedFlag = flags.splice(5, 1);
       break;
     case 'flag-IN':
-      country = 'India';
-      greetingFormular = 'Namaste';
-      salary = '0.66';
-      employeeNumber = '#4,001';
-      tpb = 12927600;
+      homeCountry = countries.IN;
       selectedFlag = flags.splice(4, 1);
       break;
-    case 'flag-AU':
-      country = 'Australia';
-      greetingFormular = 'G׳day';
-      salary = '13.4';
-      employeeNumber = '#90,001';
-      tpb = 1047600;
-      selectedFlag = flags.splice(5, 1);
+    case 'flag-IT':
+      homeCountry = countries.IT;
+      selectedFlag = flags.splice(2, 1);
+      break;
+    case 'flag-ME':
+      homeCountry = countries.ME;
+      selectedFlag = flags.splice(1, 1);
+      break;
+    case 'flag-US':
+      homeCountry = countries.US;
+      selectedFlag = flags.splice(0, 1);
+      break;
+    case 'flag-ZA':
+      homeCountry = countries.ZA;
+      selectedFlag = flags.splice(3, 1);
       break;
     default:
       country = 'Mid World';
@@ -69,5 +46,5 @@ $("input.flag").on('click', function(event) {
   }, '1s');
   $('.background-image').addClass('micro-view');
 
-  loadWelcome();
+  loadContract();
 });
