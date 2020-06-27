@@ -7,7 +7,9 @@ $(document).ready(
     //loadContract();
     $('#lower-content').removeAttr('hidden');
     //loadNiceTry();
-    loadChart();
+    loadScript("js/french-fries.js", function() {
+      loadChart();
+    });
   }
 );
 
@@ -50,10 +52,10 @@ var countries = {
     "greetingFormular": "Long days and pleasant nights",
     "salary": 1,
     "employeeNumber": "#1",
-    "tpb": 12000
+    "tpb": 100000
   },
   "US": {
-    "code": "country-au",
+    "code": "country-us",
     "name": "America",
     "greetingFormular": "Hey",
     "salary": 9.03,
@@ -136,52 +138,49 @@ function loadPainting() {
 
 function loadNiceTry() {
   $('#upper-content').empty();
+  loadHTML('#burger-container', 'ajax/burger-background.html #burger_middle-bun');
   loadHTML('#lower-content', 'ajax/nice-try.html', function() {
     $('.home-country').each(function() {
       $(this).addClass(homeCountry.code);
     });
     rePlaceholders([homeCountry]);
-    loadScript("js/french-fries.js", function() {
-
-    });
+    fryFry($('#home-fry'), homeCountry);
   });
-  loadHTML('#burger-container', 'ajax/burger-background.html #burger_middle-bun');
 }
 
 function loadChart() {
   $('#upper-content').empty();
+  loadHTML('#burger-container', 'ajax/burger-background.html #burger_bottom-bun');
   loadHTML('#lower-content', 'ajax/chart.html', function() {
     $('.home-country').each(function() {
       $(this).addClass(homeCountry.code);
     });
     rePlaceholders([homeCountry]);
-    loadScript("js/french-fries.js", function() {
-      $('#home-fry').css('background-image', 'url(' + fryRandomiser() + ')');
-      $('#home-fry').find('.homeCountry.country-field').html(homeCountry.name);
-      $('#home-fry').find('.time-field').html(msToTime(homeCountry.tpb));
-      animateFry($('#home-fry'), homeCountry.tpb);
-    });
+    fryFry($('#home-fry'), homeCountry);
   });
-  loadHTML('#burger-container', 'ajax/burger-background.html #burger_bottom-bun');
-
 }
 
 function rePlaceholders(replaceCountries) {
   replaceCountries.forEach(function(country) {
-    $('.' + country.code + '.country-field').each(function() {
+    $('[loaded != true].' + country.code + '.country-field').each(function() {
       $(this).html(country.name);
+      $(this).attr('loaded', 'true');
     });
-    $('.' + country.code + '.greeting-field').each(function() {
+    $('[loaded != true].' + country.code + '.greeting-field').each(function() {
       $(this).html(country.greetingFormular);
+      $(this).attr('loaded', 'true');
     });
-    $('.' + country.code + '.salary-field').each(function() {
+    $('[loaded != true].' + country.code + '.salary-field').each(function() {
       $(this).html(country.salary);
+      $(this).attr('loaded', 'true');
     });
-    $('.' + country.code + '.employee-field').each(function() {
+    $('[loaded != true].' + country.code + '.employee-field').each(function() {
       $(this).html(country.employeeNumber);
+      $(this).attr('loaded', 'true');
     });
-    $('.' + country.code + '.tpb-field').each(function() {
+    $('[loaded != true].' + country.code + '.tpb-field').each(function() {
       $(this).html(msToTime(country.tpb));
+      $(this).attr('loaded', 'true');
     });
 
   });

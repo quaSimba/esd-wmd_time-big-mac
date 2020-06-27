@@ -30,7 +30,6 @@ $("input.flag").on('click', function(event) {
       selectedFlag = flags.splice(3, 1);
       break;
     default:
-      country = 'Mid World';
       break;
   }
   for (var i = 0; i < flags.length; i++) {

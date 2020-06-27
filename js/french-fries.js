@@ -1,4 +1,6 @@
-var timeElapsed = 0;
+var fryID = 0;
+var fries = [];
+var interval = null;
 
 function fryRandomiser() {
   var fries = [
@@ -9,30 +11,55 @@ function fryRandomiser() {
   return fries[Math.floor(Math.random() * fries.length)];
 }
 
-function animateFry(fry, time) {
-  var timeRemaining = time;
-  var timeDisplay = fry.find('.time-field');
-  fry.css('background-position', -fry.outerWidth());
+function animateFry(fry, duration, accelerationFactor) {
+  fry.stop();
+  clearInterval(interval);
+  var tpbField = fry.find('.tpb-field');
 
-  var interval = setInterval(function() {
-    if (timeRemaining > 1000) {
-      timeDisplay.html(msToTime(timeRemaining));
+  var timeRemaining = duration - fries[fry.attr('id')].timeElapsed;
+
+  interval = setInterval(function() {
+    if (timeRemaining >= 1000) {
       timeRemaining -= 1000;
+      tpbField.html(msToTime(timeRemaining));
+      fries[fry.attr('id')].timeElapsed += 1000;
     } else {
       clearInterval(interval);
     }
-  }, 1000);
+  }, 1000 / accelerationFactor);
 
   fry.animate({
     backgroundPosition: '0px'
-  }, time, 'linear', function() {
-    fry.find('.time-field').html("finished!");
+  }, {
+    duration: timeRemaining / accelerationFactor,
+    step: function(now, fx) {
+      //fries[fry.attr('id')].progress = fx.pos;
+      //console.log(fries[fry.attr('id')].timeElapsed);
+    },
+    easing: 'linear',
+    done: function() {
+      fry.find('.tpb-field').html("finished!");
+    }
   });
 }
 
+function decreaseTime(tpbField, time) {
+  tpbField.html(msToTime(time));
+  return time -= 1000;
+}
+
 function fryFry(target, country) {
-  $(target).css('background-image', 'url(' + fryRandomiser() + ')');
-  $('#home-fry').find('.homeCountry.country-field').html(homeCountry.name);
-  $('#home-fry').find('.time-field').html(msToTime(homeCountry.tpb));
-  animateFry($('#home-fry'), homeCountry.tpb);
+  target.html('<span loaded=true" class="country-field ' + country.code + '">' + country.name + '</span> – <span loaded=true class="tpb-field ' + country.code + '">' + msToTime(country.tpb) + '</span>');
+  target.css('background-image', 'url(' + fryRandomiser() + ')');
+  target.css('background-position', -target.outerWidth());
+  fries[target.attr('id')] = {
+    'progress': 0,
+    'timeElapsed': 0
+  };
+  animateFry(target, country.tpb, 1);
+  target.on('mousedown touchstart', function() {
+    animateFry(target, country.tpb, 20);
+  }).on('mouseup touchend', function() {
+    animateFry(target, country.tpb, 1);
+  });
 }
