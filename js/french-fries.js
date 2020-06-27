@@ -1,3 +1,5 @@
+var timeElapsed = 0;
+
 function fryRandomiser() {
   var fries = [
     'resources/img/french-fry-01.svg',
@@ -12,12 +14,12 @@ function animateFry(fry, time) {
   var timeDisplay = fry.find('.time-display');
   fry.css('background-position', -fry.outerWidth());
 
-  var intervall = setInterval(function() {
+  var interval = setInterval(function() {
     if (timeRemaining > 1000) {
       timeDisplay.html(msToTime(timeRemaining));
       timeRemaining -= 1000;
     } else {
-      clearInterval(intervall);
+      clearInterval(interval);
     }
   }, 1000);
 
