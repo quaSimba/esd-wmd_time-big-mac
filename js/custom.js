@@ -1,5 +1,6 @@
 $(document).ready(
   function() {
+    $('body').disablescroll();
     loadStart();
     //loadPainting();
     //loadContract();
@@ -45,14 +46,14 @@ var countries = {
     "employeeNumber": "#11,501",
     "tpb": 10080000
   },
-  "MW": {
+  /*"MW": {
     "code": "country-mw",
     "name": "Mid World",
     "greetingFormular": "Long days and pleasant nights",
     "salary": 1,
     "employeeNumber": "#1",
     "tpb": 3000
-  },
+  },*/
   "US": {
     "code": "country-us",
     "name": "America",
@@ -74,21 +75,6 @@ var countries = {
 var homeCountry = countries.MW;
 
 var isInfoLoaded = 0;
-
-/*function initFullpage() {
-  $('#fullpage').fullpage({
-    //options here
-    autoScrolling: false,
-    scrollHorizontally: false,
-    verticalCentered: false,
-    responsiveWidth: 0,
-    responsiveHeight: 0,
-  });
-
-  //methods
-  $.fn.fullpage.setAllowScrolling(false);
-  $.fn.fullpage.setKeyboardScrolling(false);
-}*/
 
 function loadStart() {
   loadHTML('#upper-content', 'ajax/texts.html #welcome-text');
@@ -132,9 +118,6 @@ function loadPainting() {
   $('#lower-content').load('ajax/canvas.html', ajaxError(), function() {
     $('#canvas').on('load', loadScript('js/painting.js'));
   });
-  //  loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
-  //     $('#top-bun').remove();
-  //  });
   loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
     $('.burger-layer').remove('#top-bun');
   });
