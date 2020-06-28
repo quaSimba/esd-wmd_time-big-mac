@@ -100,7 +100,7 @@ function loadContract() {
   upperContent.empty();
   loadHTML('#lower-content', 'ajax/contract.html', function() {
     $('#mayo-1').animate({left:'-300px'},1);  
-     $('#mayo-1').animate({left:'0px'},"slow");  
+    $('#mayo-1').animate({left:'0px'},"slow");  
       $('.home-country').each(function() {
      $(this).addClass(homeCountry.code);
     });
@@ -116,10 +116,10 @@ function loadPainting() {
         $('#top-bun').animate({top:'-500px', left:'300px'},"slow");    
 
   });
-  loadHTML('#upper-content', 'ajax/texts.html #new-order-text');
+  loadHTML('#upper-content', 'ajax/texts.html #new-order-text'); 
   lowerContent.load('ajax/canvas.html', ajaxError(), function() {
     $('#canvas').on('load', loadScript('js/painting.js'));
-    lowerContent.removeAttr('hidden');
+    lowerContent.removeAttr('hidden'); 
   });
 }
 
@@ -133,7 +133,6 @@ function loadNiceTry() {
     });
     loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
       $('.burger-layer').remove('#top-bun');
-//      $('.burger-layer').remove('#burger-patty');
        $('.burger-layer').animate({top:'-200px'},"slow");
        $('#burger-patty').animate({top:'-500px', left:'300px'},"slow");
   
@@ -154,7 +153,6 @@ function loadChart() {
     loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
       $('.burger-layer').remove('#top-bun');
       $('.burger-layer').remove('#burger-patty');
-//      $('.burger-layer').remove('#middle-bun');
       $('.burger-layer').animate({top:'-280px'},"slow");
       $('#middle-bun').animate({top:'-500px', left:'300px'},"slow");
   
@@ -199,7 +197,9 @@ function rePlaceholders(replaceCountries) {
 
 function toggleInfo() {
   infoContent.toggle();
-  upperContent.toggle();
+  upperContent.toggle();    
+    $('#ketchup').animate({bottom:'-300px'},.5);  
+    $('#ketchup').animate({bottom:'0px'},"slow");  
   burgerContainer.toggleClass('strong-blur');
   if (lowerContent.children().length) lowerContent.toggle();
   collapseHeader(lowerContent.is(':visible'));
@@ -212,11 +212,13 @@ function wipeContents() {
 
 function collapseHeader(choice) {
   if (choice) {
-    $('#logo-big').attr('id', 'logo-small');
+//    $('#logo-big').attr('id', 'logo-small');
+    $('#logo-big').animate({width:'30px'},"fast");
     $('#info-icon').css('margin-top', '10px');
     $('#slogan').attr('hidden', 'true');
   } else {
-    $('#logo-small').attr('id', 'logo-big');
+//    $('#logo-small').attr('id', 'logo-big');
+    $('#logo-big').animate({width:'60px'},"fast"); 
     $('#info-icon').css('margin-top', '20px');
     $('#slogan').removeAttr('hidden');
   }
