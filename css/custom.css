@@ -160,7 +160,6 @@ button {
   background-image: url("../resources/img/bg_mayo-3.png");
 }
 
-
 #mayo-4 {
   background-image: url("../resources/img/bg_mayo-3.png");
 }
@@ -188,7 +187,7 @@ button {
   background-size: 190%;
   position: relative;
   height: 370px;
-  top:-100px;
+  top: -100px;
   z-index: 0;
 }
 
@@ -199,15 +198,34 @@ button {
   background-size: 190%;
   position: relative;
   height: 300px;
-  top:-150px;
-  z-index: -1;    
+  top: -150px;
+  z-index: -1;
 }
 
-.burger-layer{
-    margin: 0;
-   padding: 0;S
+.burger-layer {
+  margin: 0;
+  padding: 0;
 }
- 
+
+.french-fry, .time-field {
+  color: #8B6157;
+}
+
+.french-fry {
+  background-repeat: no-repeat;
+  position: relative;
+  box-sizing: border-box;
+  width: 100vw;
+  left: -12.5vw;
+  padding: 0 12.5vw;
+  height: 30px;
+  line-height: 30px;
+  filter: drop-shadow(0 3px 5px #00000030);
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 @keyframes micro-view-animation {
   from {
@@ -218,7 +236,6 @@ button {
     transform: scale(180%);
   }
 }
-
 
 .micro-view {
   -webkit-animation: micro-view-animation .5s ease-in forwards;
