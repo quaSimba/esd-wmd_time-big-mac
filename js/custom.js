@@ -46,14 +46,15 @@ var countries = {
     "employeeNumber": "#11,501",
     "tpb": 10080000
   },
-  /*"MW": {
-    "code": "country-mw",
-    "name": "Mid World",
-    "greetingFormular": "Long days and pleasant nights",
-    "salary": 1,
-    "employeeNumber": "#1",
-    "tpb": 3000
-  },*/
+  /*
+    "MW": {
+      "code": "country-mw",
+      "name": "Mid World",
+      "greetingFormular": "Long days and pleasant nights",
+      "salary": 1,
+      "employeeNumber": "#1",
+      "tpb": 3000
+    },*/
   "US": {
     "code": "country-us",
     "name": "America",
@@ -72,7 +73,7 @@ var countries = {
   }
 };
 
-var homeCountry = countries.MW;
+var homeCountry = countries.AU;
 
 var isInfoLoaded = 0;
 
@@ -130,11 +131,11 @@ function loadNiceTry() {
     $('.home-country').each(function() {
       $(this).addClass(homeCountry.code);
     });
-  loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
-    $('.burger-layer').remove('#top-bun');
-    $('.burger-layer').remove('#burger-patty');
-      });
-      
+    loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
+      $('.burger-layer').remove('#top-bun');
+      $('.burger-layer').remove('#burger-patty');
+    });
+
     rePlaceholders([homeCountry]);
     fryFry($('#home-fry'), homeCountry);
   });
@@ -147,11 +148,11 @@ function loadChart() {
     $('.home-country').each(function() {
       $(this).addClass(homeCountry.code);
     });
-  loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
-    $('.burger-layer').remove('#top-bun');
-    $('.burger-layer').remove('#burger-patty');
-    $('.burger-layer').remove('#middle-bun');      
-      }); 
+    loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
+      $('.burger-layer').remove('#top-bun');
+      $('.burger-layer').remove('#burger-patty');
+      $('.burger-layer').remove('#middle-bun');
+    });
     rePlaceholders([homeCountry]);
     fryFry($('#home-fry'), homeCountry);
     var chartWrapper = $('#chart-wrapper');
@@ -160,6 +161,7 @@ function loadChart() {
       chartWrapper.append('<p class="french-fry"></p>');
       fryFry($('.french-fry:last'), countries[key]);
     }
+    $('#fry-box').css('height', $('#chart-wrapper').outerHeight());
   });
 }
 
