@@ -1,14 +1,12 @@
-// kick-starting fullpage
 $(document).ready(
   function() {
-    initFullpage();
-    //loadStart();
+    loadStart();
     //loadPainting();
     //loadContract();
     $('#lower-content').removeAttr('hidden');
     loadScript("js/french-fries.js", function() {
       //loadNiceTry();
-      loadChart();
+      //loadChart();
     });
   }
 );
@@ -77,7 +75,7 @@ var homeCountry = countries.MW;
 
 var isInfoLoaded = 0;
 
-function initFullpage() {
+/*function initFullpage() {
   $('#fullpage').fullpage({
     //options here
     autoScrolling: false,
@@ -90,7 +88,7 @@ function initFullpage() {
   //methods
   $.fn.fullpage.setAllowScrolling(false);
   $.fn.fullpage.setKeyboardScrolling(false);
-}
+}*/
 
 function loadStart() {
   loadHTML('#upper-content', 'ajax/texts.html #welcome-text');
