@@ -188,6 +188,10 @@ button {
   height: 30px;
   line-height: 30px;
   filter: drop-shadow(0 3px 5px #00000030);
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @keyframes micro-view-animation {
