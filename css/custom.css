@@ -129,7 +129,7 @@ button {
 
 /* Background burger style */
 #burger-container {
-  height: 330px;
+  height: 60vh;
   bottom: 0;
 }
 
@@ -180,42 +180,46 @@ button {
   transform: scale(1.1);
 }
 
+/* burger backgrounds */
+#top-bun{   
+  background-image: url("../resources/img/burger_Top-Bun.png");
+  background-size: contain;
+  position: relative;
+  top: 0vh;
+  z-index: 2;
+
+}
 #burger-patty {
   background-image: url("../resources/img/burger_Top-Patty.png");
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-  background-size: 190%;
+  background-size: contain;
   position: relative;
-  height: 280px;
-  top: 0px;
+  top: 0vh;
   z-index: 1;
 }
 
 #middle-bun {
   background-image: url("../resources/img/burger_Middle-Bun.png");
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-  background-size: 190%;
+  background-size: contain;
   position: relative;
-  height: 370px;
-  top: -100px;
+  top: -15vh;
   z-index: 0;
 }
 
 #bottom-bun {
   background-image: url("../resources/img/burger_Bottom-Bun.png");
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-  background-size: 190%;
+  background-size: contain;
   position: relative;
-  height: 300px;
-  top: -150px;
+  top: -25vh;
   z-index: -1;
 }
 
 .burger-layer {
   margin: 0;
   padding: 0;
+  transform: scale(1.9);
+  height: 140px;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
 }
 
 .french-fry, .time-field {
@@ -282,31 +286,38 @@ button {
 #flag-US {
   left: 13%;
   top: 2%;
+  transform: rotate(-5deg);
 }
 
 #flag-ME {
   left: 17%;
   top: 20%;
+  transform: rotate(-5deg);
 }
 
 #flag-IT {
   left: 45%;
   top: 0;
+  transform: rotate(5deg);    
 }
 
 #flag-ZA {
   left: 45%;
   top: 25%;
+  transform: rotate(5deg);   
 }
 
 #flag-IN {
   left: 60%;
   top: 13%;
+  transform: rotate(-5deg);
+
 }
 
 #flag-AU {
   left: 80%;
   top: 22%;
+  transform: rotate(-5deg);
 }
 
 /* Style canvas for burger painting, not possible to do it responsively */

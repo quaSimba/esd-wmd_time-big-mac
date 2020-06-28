@@ -2,6 +2,7 @@ var upperContent, lowerContent, infoContent, burgerContainer;
 $(document).ready(
   function() {
     $('body').disablescroll();
+
     upperContent = $('#upper-content');
     lowerContent = $('#lower-content');
     infoContent = $('#info-content');
@@ -10,6 +11,7 @@ $(document).ready(
     //loadPainting();
     //loadContract();
     //lowerContent.removeAttr('hidden');
+
     loadScript("js/french-fries.js", function() {
       //loadNiceTry();
       //loadChart();
@@ -81,6 +83,8 @@ var homeCountry = {
 
 var isInfoLoaded = false;
 
+
+
 function loadStart() {
   collapseHeader(false);
   wipeContents();
@@ -95,8 +99,10 @@ function loadContract() {
   collapseHeader(true);
   upperContent.empty();
   loadHTML('#lower-content', 'ajax/contract.html', function() {
-    $('.home-country').each(function() {
-      $(this).addClass(homeCountry.code);
+    $('#mayo-1').animate({left:'-300px'},1);  
+     $('#mayo-1').animate({left:'0px'},"slow");  
+      $('.home-country').each(function() {
+     $(this).addClass(homeCountry.code);
     });
     rePlaceholders([homeCountry]);
   });
@@ -105,8 +111,10 @@ function loadContract() {
 
 function loadPainting() {
   collapseHeader(true);
-  loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
-    $('.burger-layer').remove('#top-bun');
+    loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
+        $('.burger-layer').animate({top:'-100px'},"slow");
+        $('#top-bun').animate({top:'-500px', left:'300px'},"slow");    
+
   });
   loadHTML('#upper-content', 'ajax/texts.html #new-order-text');
   lowerContent.load('ajax/canvas.html', ajaxError(), function() {
@@ -125,7 +133,10 @@ function loadNiceTry() {
     });
     loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
       $('.burger-layer').remove('#top-bun');
-      $('.burger-layer').remove('#burger-patty');
+//      $('.burger-layer').remove('#burger-patty');
+       $('.burger-layer').animate({top:'-200px'},"slow");
+       $('#burger-patty').animate({top:'-500px', left:'300px'},"slow");
+  
     });
     rePlaceholders([homeCountry]);
     fryFry($('#home-fry'), homeCountry);
@@ -143,7 +154,11 @@ function loadChart() {
     loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
       $('.burger-layer').remove('#top-bun');
       $('.burger-layer').remove('#burger-patty');
-      $('.burger-layer').remove('#middle-bun');
+//      $('.burger-layer').remove('#middle-bun');
+      $('.burger-layer').animate({top:'-280px'},"slow");
+      $('#middle-bun').animate({top:'-500px', left:'300px'},"slow");
+  
+        
     });
     rePlaceholders([homeCountry]);
     fryFry($('#home-fry'), homeCountry);
