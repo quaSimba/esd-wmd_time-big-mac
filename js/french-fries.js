@@ -1,6 +1,5 @@
-var fryID = 0;
+var timeElapsed = 0;
 var fries = [];
-var interval = null;
 
 function fryRandomiser() {
   var fryImages = [
@@ -11,7 +10,7 @@ function fryRandomiser() {
   return fryImages[Math.floor(Math.random() * fryImages.length)];
 }
 
-function animateFry(fry, accelerationFactor) {
+function animateFry(fry, accelerationFactor, delta) {
   var helperFry = fries[fry.attr('id')];
   clearInterval(helperFry.intervalID);
   var tpbField = fry.find('.tpb-field');
@@ -23,7 +22,7 @@ function animateFry(fry, accelerationFactor) {
       lastStep = new Date();
       tpbField.html(msToTime(Math.ceil(helperFry.timeRemaining / 1000) * 1000));
     } else {
-      fry.find('.tpb-field').html("finished!");
+      tpbField.html('finished!');
       clearInterval(helperFry.intervalID);
     }
   }, 1000 / accelerationFactor);
@@ -38,14 +37,21 @@ function animateFry(fry, accelerationFactor) {
 
 function fryFry(target, country) {
   target.attr('id', country.code);
-  target.html('<span loaded=true" class="country-field ' + country.code + '">' + country.name + '</span> – <span loaded=true class="tpb-field ' + country.code + '">' + msToTime(country.tpb) + '</span>');
+  var progress = msToTime(country.tpb - timeElapsed);
+  if ((country.tpb - timeElapsed) < 1000) progress = 'finished!';
+  target.html('<span loaded=true" class="country-field ' + country.code + '">' + country.name + '</span> – <span loaded=true class="tpb-field ' + country.code + '">' + progress + '</span>');
   target.css('background-image', 'url(' + fryRandomiser() + ')');
-  target.css('background-position', -(target.outerWidth() - parseInt(target.css('padding-left'))));
+
+  var fryDistanceToCover = target.outerWidth() - parseInt(target.css('padding-left'));
+  var fryDistanceCovered = fryDistanceToCover * timeElapsed / country.tpb;
+  target.css('background-position', -(fryDistanceToCover) + fryDistanceCovered);
+
   fries[target.attr('id')] = {
     'duration': country.tpb,
-    'timeRemaining': country.tpb,
+    'timeRemaining': country.tpb - timeElapsed,
     'intervalID': null
   };
+
   animateFry(target, 1);
   target.on('mousedown touchstart', function() {
     $('.french-fry').each(function() {
@@ -57,6 +63,15 @@ function fryFry(target, country) {
       animateFry($(this), 1);
     });
   });
+}
+
+function setTimeElapsed(value) {
+  if (value !== undefined) {
+    timeElapsed = value;
+    return;
+  }
+  var firstFry = fries[Object.keys(fries)[0]];
+  timeElapsed = firstFry.duration - firstFry.timeRemaining;
 }
 
 // from https://coderwall.com/p/wkdefg/converting-milliseconds-to-hh-mm-ss-mmm
