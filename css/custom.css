@@ -123,7 +123,7 @@ button {
 
 /* Background burger style */
 #burger-container {
-  height: 320px;
+  height: 380px;
   bottom: 0;
 }
 
@@ -170,31 +170,44 @@ button {
   background-size: 110%;
 }
 
-#top-bun {
-  background-image: url("../resources/img/burger_Top-Bun.png");
-  background-size: 110%;
-  top:0;
-}
-
 #burger-patty {
   background-image: url("../resources/img/burger_Top-Patty.png");
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
   background-size: 190%;
-  top: -60px;
+  position: relative;
+  height: 280px;
+  top: 0px;
+  z-index: 1;
 }
 
 #middle-bun {
   background-image: url("../resources/img/burger_Middle-Bun.png");
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
   background-size: 190%;
-  top: -60px;
-
+  position: relative;
+  height: 370px;
+  top:-100px;
+  z-index: 0;
 }
 
 #bottom-bun {
   background-image: url("../resources/img/burger_Bottom-Bun.png");
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
   background-size: 190%;
-  top: -60px;
-    
+  position: relative;
+  height: 300px;
+  top:-150px;
+  z-index: -1;    
 }
+
+.burger-layer{
+    margin: 0;
+   padding: 0;S
+}
+ 
 
 @keyframes micro-view-animation {
   from {
