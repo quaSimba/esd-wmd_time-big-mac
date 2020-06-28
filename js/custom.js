@@ -1,14 +1,22 @@
+var upperContent, lowerContent, infoContent, burgerContainer;
 $(document).ready(
   function() {
     $('body').disablescroll();
+
+    upperContent = $('#upper-content');
+    lowerContent = $('#lower-content');
+    infoContent = $('#info-content');
+    burgerContainer = $('#burger-container');
     loadStart();
-//    loadPainting();
-//    loadContract();
-    $('#lower-content').removeAttr('hidden');
+    //loadPainting();
+    //loadContract();
+    //lowerContent.removeAttr('hidden');
+
     loadScript("js/french-fries.js", function() {
       //loadNiceTry();
       //loadChart();
     });
+    loadHTML('#info-content', 'ajax/info.html');
   }
 );
 
@@ -46,15 +54,6 @@ var countries = {
     "employeeNumber": "#11,501",
     "tpb": 10080000
   },
-  /*
-    "MW": {
-      "code": "country-mw",
-      "name": "Mid World",
-      "greetingFormular": "Long days and pleasant nights",
-      "salary": 1,
-      "employeeNumber": "#1",
-      "tpb": 3000
-    },*/
   "US": {
     "code": "country-us",
     "name": "America",
@@ -73,21 +72,32 @@ var countries = {
   }
 };
 
-var homeCountry = countries.AU;
+var homeCountry = {
+  "code": "country-mw",
+  "name": "Mid World",
+  "greetingFormular": "Long days and pleasant nights",
+  "salary": 1,
+  "employeeNumber": "#1",
+  "tpb": 3000
+};
 
-var isInfoLoaded = 0;
+var isInfoLoaded = false;
 
 
 
 function loadStart() {
+  collapseHeader(false);
+  wipeContents();
+  loadHTML('#info-content', 'ajax/info.html');
   loadHTML('#upper-content', 'ajax/texts.html #welcome-text');
-  loadHTML('#burger-container', 'ajax/burger-background.html #burger-flags');
-  loadScript("js/flag-events.js");
+  loadHTML('#burger-container', 'ajax/burger-background.html #burger-flags', function() {
+    loadScript("js/flag-events.js");
+  });
 }
 
 function loadContract() {
-  collapseHeader();
-  $('#upper-content').empty();
+  collapseHeader(true);
+  upperContent.empty();
   loadHTML('#lower-content', 'ajax/contract.html', function() {
     $('#mayo-1').animate({left:'-300px'},1);  
      $('#mayo-1').animate({left:'0px'},"slow");  
@@ -96,44 +106,26 @@ function loadContract() {
     });
     rePlaceholders([homeCountry]);
   });
-  $('#lower-content').removeAttr('hidden');
-}
-
-
-function loadInfo() {
-  if (isInfoLoaded == 0) {
-    $('#lower-content').removeAttr('hidden');
-    $('#upper-content').attr('hidden', 'true');
-    $('#lower-content').empty();
-    loadHTML('#lower-content', 'ajax/info.html');
-    isInfoLoaded = 1;
-  } else {
-    $('#lower-content').attr('hidden', 'true');
-    $('#upper-content').removeAttr('hidden');
-    $('#lower-content').empty();
-    isInfoLoaded = 0;
-  }
+  lowerContent.removeAttr('hidden');
 }
 
 function loadPainting() {
-  $('#upper-content').empty();
-  loadHTML('#upper-content', 'ajax/texts.html #new-order-text');
-  $('#lower-content').empty();
-  $('#lower-content').removeAttr('hidden');
-  $('#lower-content').load('ajax/canvas.html', ajaxError(), function() {
-    $('#canvas').on('load', loadScript('js/painting.js'));
-  });
-//  loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
-//    $('.burger-layer').remove('#top-bun');
+  collapseHeader(true);
     loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
         $('.burger-layer').animate({top:'-100px'},"slow");
-        $('#top-bun').animate({top:'-500px', left:'300px'},"slow");       
-    
+        $('#top-bun').animate({top:'-500px', left:'300px'},"slow");    
+
+  });
+  loadHTML('#upper-content', 'ajax/texts.html #new-order-text');
+  lowerContent.load('ajax/canvas.html', ajaxError(), function() {
+    $('#canvas').on('load', loadScript('js/painting.js'));
+    lowerContent.removeAttr('hidden');
   });
 }
 
 function loadNiceTry() {
-  $('#upper-content').empty();
+  collapseHeader(true);
+  upperContent.empty();
   loadHTML('#burger-container', 'ajax/burger-background.html #burger_middle-bun');
   loadHTML('#lower-content', 'ajax/nice-try.html', function() {
     $('.home-country').each(function() {
@@ -146,14 +138,14 @@ function loadNiceTry() {
        $('#burger-patty').animate({top:'-500px', left:'300px'},"slow");
   
     });
-
     rePlaceholders([homeCountry]);
     fryFry($('#home-fry'), homeCountry);
   });
 }
 
 function loadChart() {
-  $('#upper-content').empty();
+  collapseHeader(true);
+  upperContent.empty();
   loadHTML('#burger-container', 'ajax/burger-background.html #burger_bottom-bun');
   loadHTML('#lower-content', 'ajax/chart.html', function() {
     $('.home-country').each(function() {
@@ -202,15 +194,39 @@ function rePlaceholders(replaceCountries) {
       $(this).html(msToTime(country.tpb));
       $(this).attr('loaded', 'true');
     });
-
   });
 }
 
+function toggleInfo() {
+  infoContent.toggle();
+  upperContent.toggle();
+  burgerContainer.toggleClass('strong-blur');
+  if (lowerContent.children().length) lowerContent.toggle();
+  collapseHeader(lowerContent.is(':visible'));
+}
 
-function collapseHeader() {
-  $('#logo-big').attr('id', 'logo-small');
-  $('#slogan').attr('hidden', 'true');
-  $('#info-icon').css('margin-top', '10px');
+function wipeContents() {
+  upperContent.empty();
+  lowerContent.empty();
+}
+
+function collapseHeader(choice) {
+  if (choice) {
+    $('#logo-big').attr('id', 'logo-small');
+    $('#info-icon').css('margin-top', '10px');
+    $('#slogan').attr('hidden', 'true');
+  } else {
+    $('#logo-small').attr('id', 'logo-big');
+    $('#info-icon').css('margin-top', '20px');
+    $('#slogan').removeAttr('hidden');
+  }
+}
+
+function restart() {
+  collapseHeader(false);
+  if (infoContent.is(':visible')) toggleInfo();
+  wipeContents();
+  loadStart();
 }
 
 // helper functions:

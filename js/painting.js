@@ -48,7 +48,7 @@ function clearPainting() {
 function finishPainting() {
   canvas.off();
   $('#painting-instructions').attr('hidden', 'true');
-  $('.lower-wrapper').append('<button type="button" name="finish-painting" id="serve-button" onclick="loadNiceTry()">Serve it!</button>');
+  $('#painting-instructions').after('<button type="button" name="finish-painting" id="serve-button" onclick="loadNiceTry()">Serve it!</button>');
 }
 
 function handleDrawingStart(e) {

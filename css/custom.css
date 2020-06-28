@@ -149,6 +149,11 @@ button {
   height: 100%;
 }
 
+.strong-blur {
+  filter: blur(30px);
+  -webkit-filter: blur(30px);
+}
+
 /* Sauce backgrounds */
 #mayo-1 {
   background-image: url("../resources/img/bg_mayo-1.png");
@@ -172,7 +177,7 @@ button {
 
 #burger-flags {
   background-image: url("../resources/img/burger@3x.png");
-  background-size: 110%;
+  transform: scale(1.1);
 }
 
 /* burger backgrounds */
@@ -228,11 +233,14 @@ button {
   width: 100vw;
   left: -12.5vw;
   padding: 0 12.5vw;
-  margin: 8px 0;
   height: 30px;
   line-height: 30px;
   filter: drop-shadow(0 3px 5px #00000030);
   text-align: right;
+}
+
+#chart-wrapper>.french-fry {
+  margin: 8px 0;
 }
 
 #chart-wrapper {
@@ -256,7 +264,7 @@ button {
 
 @keyframes micro-view-animation {
   from {
-    transform: scale(1);
+    transform: scale(1.1);
   }
 
   to {
