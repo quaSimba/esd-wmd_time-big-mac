@@ -1,8 +1,8 @@
 $(document).ready(
   function() {
     $('body').disablescroll();
-    loadStart();
-    //loadPainting();
+    //loadStart();
+    loadPainting();
     //loadContract();
     $('#lower-content').removeAttr('hidden');
     loadScript("js/french-fries.js", function() {

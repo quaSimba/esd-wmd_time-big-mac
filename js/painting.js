@@ -23,25 +23,26 @@ var hasStroked = false;
 var isDrawing, lastPoint;
 var canvasBounds = canvas[0].getBoundingClientRect();
 
+$('#painting-instructions').html(paintingInstructions[strokeCounter]);
 enablePainting();
 
 function enablePainting() {
-  $('#painting-instructions').html(paintingInstructions[strokeCounter]);
   canvas.on('mousedown touchstart', handleDrawingStart);
   canvas.on('mousemove touchmove', handleDrawingInProgress);
   canvas.on('mouseup touchend', handleDrawingEnd);
 }
 
 function clearPainting() {
+  ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
+  hasStroked = false;
+  strokeCounter = 0;
+  brush.src = brushes[strokeCounter];
+  $('#painting-instructions').html(paintingInstructions[strokeCounter]);
   $('#painting-instructions').removeAttr('hidden');
   if ($('#serve-button').length) {
     $('#serve-button').remove();
     enablePainting();
   }
-  ctx.clearRect(0, 0, canvas[0].width, canvas[0].height);
-  hasStroked = false;
-  strokeCounter = 0;
-  brush.src = brushes[strokeCounter];
 }
 
 function finishPainting() {
