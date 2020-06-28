@@ -1,5 +1,6 @@
 /* General styles */
 html, body {
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   color: #515151;
 }
@@ -185,6 +186,7 @@ button {
   width: 100vw;
   left: -12.5vw;
   padding: 0 12.5vw;
+  margin: 8px 0;
   height: 30px;
   line-height: 30px;
   filter: drop-shadow(0 3px 5px #00000030);
@@ -192,6 +194,25 @@ button {
   -moz-user-select: -moz-none;
   -ms-user-select: none;
   user-select: none;
+}
+
+#chart-wrapper {
+  position: relative;
+  padding: 8px 0;
+  margin-top: 16px;
+}
+
+#fry-box {
+  background-image: url('../resources/img/french-fry_box.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left;
+  width: 12.5vw;
+  position: absolute;
+  left: -12.5vw;
+  top: 0;
+  z-index: 1;
+  filter: drop-shadow(0 3px 10px #00000030);
 }
 
 @keyframes micro-view-animation {

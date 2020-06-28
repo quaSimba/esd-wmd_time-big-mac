@@ -2,13 +2,13 @@
 $(document).ready(
   function() {
     initFullpage();
-    //loadStart();
+    loadStart();
     //loadPainting();
     //loadContract();
     $('#lower-content').removeAttr('hidden');
     loadScript("js/french-fries.js", function() {
       //loadNiceTry();
-      loadChart();
+      //loadChart();
     });
   }
 );
@@ -47,14 +47,15 @@ var countries = {
     "employeeNumber": "#11,501",
     "tpb": 10080000
   },
-  "MW": {
-    "code": "country-mw",
-    "name": "Mid World",
-    "greetingFormular": "Long days and pleasant nights",
-    "salary": 1,
-    "employeeNumber": "#1",
-    "tpb": 3000
-  },
+  /*
+    "MW": {
+      "code": "country-mw",
+      "name": "Mid World",
+      "greetingFormular": "Long days and pleasant nights",
+      "salary": 1,
+      "employeeNumber": "#1",
+      "tpb": 3000
+    },*/
   "US": {
     "code": "country-us",
     "name": "America",
@@ -73,7 +74,7 @@ var countries = {
   }
 };
 
-var homeCountry = countries.MW;
+var homeCountry = countries.AU;
 
 var isInfoLoaded = 0;
 
@@ -164,6 +165,7 @@ function loadChart() {
       chartWrapper.append('<p class="french-fry"></p>');
       fryFry($('.french-fry:last'), countries[key]);
     }
+    $('#fry-box').css('height', $('#chart-wrapper').outerHeight());
   });
 }
 

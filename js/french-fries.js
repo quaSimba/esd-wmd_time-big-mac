@@ -40,7 +40,7 @@ function fryFry(target, country) {
   target.attr('id', country.code);
   target.html('<span loaded=true" class="country-field ' + country.code + '">' + country.name + '</span> – <span loaded=true class="tpb-field ' + country.code + '">' + msToTime(country.tpb) + '</span>');
   target.css('background-image', 'url(' + fryRandomiser() + ')');
-  target.css('background-position', -target.outerWidth());
+  target.css('background-position', -(target.outerWidth() - parseInt(target.css('padding-left'))));
   fries[target.attr('id')] = {
     'duration': country.tpb,
     'timeRemaining': country.tpb,
