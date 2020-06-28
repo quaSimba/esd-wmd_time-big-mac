@@ -36,16 +36,18 @@ $("input.flag").on('click', function(event) {
     flags[i].remove();
   }
 
+  $(selectedFlag).off();
+
   // animation
   var zoomX = $('.background-image')[0].getBoundingClientRect().x + ($('.background-image')[0].getBoundingClientRect().width / 2) - selectedFlag[0].getBoundingClientRect().x;
   var zoomY = $('.background-image')[0].getBoundingClientRect().y + ($('.background-image')[0].getBoundingClientRect().height / 2) - selectedFlag[0].getBoundingClientRect().y;
 
-  $('.background-image').animate({
+  $('#burger-flags').animate({
     'left': zoomX - 30,
     'top': zoomY - 270
   }, '1s');
 
-  $('.background-image').addClass('micro-view');
+  $('#burger-flags').addClass('micro-view');
 
   loadContract();
 });

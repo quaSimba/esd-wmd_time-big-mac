@@ -38,9 +38,9 @@
       <div class="">
         <div class="" id="upper-panel">
           <div class="row header">
-            <img src="./resources/img/logo.svg" alt="website-logo" id="logo-big">
+            <img src="./resources/img/logo.svg" alt="website-logo" id="logo-big" onclick="restart()">
             <h1 id="slogan">Time is Big Mac</h1>
-            <img src="./resources/img/info_icon.svg" alt="site description" id="info-icon" onclick="loadInfo();">
+            <img src="./resources/img/info_icon.svg" alt="site description" id="info-icon" onclick="toggleInfo();">
           </div>
           <div class="row" id="upper-content">
           </div>
@@ -48,8 +48,10 @@
         <div class="" id="lower-panel">
           <div class="background" id="burger-container"> </div>
           <div class="row" id="lower-content" hidden> </div>
+          <div class="row" id="info-content" hidden> </div>
         </div>
       </div>
+    </div>
     </div>
 
   </body>
