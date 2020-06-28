@@ -130,6 +130,11 @@ function loadNiceTry() {
     $('.home-country').each(function() {
       $(this).addClass(homeCountry.code);
     });
+  loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
+    $('.burger-layer').remove('#top-bun');
+    $('.burger-layer').remove('#burger-patty');
+      });
+      
     rePlaceholders([homeCountry]);
     fryFry($('#home-fry'), homeCountry);
   });
@@ -142,6 +147,11 @@ function loadChart() {
     $('.home-country').each(function() {
       $(this).addClass(homeCountry.code);
     });
+  loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
+    $('.burger-layer').remove('#top-bun');
+    $('.burger-layer').remove('#burger-patty');
+    $('.burger-layer').remove('#middle-bun');      
+      }); 
     rePlaceholders([homeCountry]);
     fryFry($('#home-fry'), homeCountry);
     var chartWrapper = $('#chart-wrapper');
