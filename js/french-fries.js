@@ -3,59 +3,72 @@ var fries = [];
 var interval = null;
 
 function fryRandomiser() {
-  var fries = [
+  var fryImages = [
     'resources/img/french-fry-01.svg',
     'resources/img/french-fry-02.svg',
     'resources/img/french-fry-03.svg'
   ];
-  return fries[Math.floor(Math.random() * fries.length)];
+  return fryImages[Math.floor(Math.random() * fryImages.length)];
 }
 
-function animateFry(fry, duration, accelerationFactor) {
-  fry.stop();
-  clearInterval(interval);
+function animateFry(fry, accelerationFactor) {
+  var helperFry = fries[fry.attr('id')];
+  clearInterval(helperFry.intervalID);
   var tpbField = fry.find('.tpb-field');
+  var lastStep = new Date();
 
-  var timeRemaining = duration - fries[fry.attr('id')].timeElapsed;
-
-  interval = setInterval(function() {
-    if (timeRemaining > 1000) {
-      timeRemaining -= 1000;
-      tpbField.html(msToTime(timeRemaining));
-      fries[fry.attr('id')].timeElapsed += 1000;
+  helperFry.intervalID = setInterval(function() {
+    if (helperFry.timeRemaining > 1000) {
+      helperFry.timeRemaining -= (new Date() - lastStep) * accelerationFactor;
+      lastStep = new Date();
+      tpbField.html(msToTime(Math.ceil(helperFry.timeRemaining / 1000) * 1000));
     } else {
-      clearInterval(interval);
+      fry.find('.tpb-field').html("finished!");
+      clearInterval(helperFry.intervalID);
     }
   }, 1000 / accelerationFactor);
 
-  fry.animate({
+  fry.stop().animate({
     backgroundPosition: '0px'
   }, {
-    duration: timeRemaining / accelerationFactor,
-    step: function(now, fx) {},
-    easing: 'linear',
-    done: function() {
-      fry.find('.tpb-field').html("finished!");
-    }
+    duration: helperFry.timeRemaining / accelerationFactor,
+    easing: 'linear'
   });
 }
 
-function decreaseTime(tpbField, time) {
-  tpbField.html(msToTime(time));
-  return time -= 1000;
-}
-
 function fryFry(target, country) {
+  target.attr('id', country.code);
   target.html('<span loaded=true" class="country-field ' + country.code + '">' + country.name + '</span> – <span loaded=true class="tpb-field ' + country.code + '">' + msToTime(country.tpb) + '</span>');
   target.css('background-image', 'url(' + fryRandomiser() + ')');
   target.css('background-position', -target.outerWidth());
   fries[target.attr('id')] = {
-    'timeElapsed': 0
+    'duration': country.tpb,
+    'timeRemaining': country.tpb,
+    'intervalID': null
   };
-  animateFry(target, country.tpb, 1);
+  animateFry(target, 1);
   target.on('mousedown touchstart', function() {
-    animateFry(target, country.tpb, 20);
-  }).on('mouseup touchend', function() {
-    animateFry(target, country.tpb, 1);
+    $('.french-fry').each(function() {
+      animateFry($(this), 200);
+    });
   });
+  target.on('mouseup touchend', function() {
+    $('.french-fry').each(function() {
+      animateFry($(this), 1);
+    });
+  });
+}
+
+// from https://coderwall.com/p/wkdefg/converting-milliseconds-to-hh-mm-ss-mmm
+function msToTime(duration) {
+  var milliseconds = parseInt((duration % 1000) / 100),
+    seconds = parseInt((duration / 1000) % 60),
+    minutes = parseInt((duration / (1000 * 60)) % 60),
+    hours = parseInt((duration / (1000 * 60 * 60)) % 24);
+
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+  return hours + ":" + minutes + ":" + seconds;
 }

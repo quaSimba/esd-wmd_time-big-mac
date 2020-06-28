@@ -7,12 +7,13 @@ $(document).ready(
     //loadContract();
     $('#lower-content').removeAttr('hidden');
     loadScript("js/french-fries.js", function() {
-      loadNiceTry();
-      //loadChart();
+      //loadNiceTry();
+      loadChart();
     });
   }
 );
 
+// please round tpb to full seconds / 1000 ms
 var countries = {
   "AU": {
     "code": "country-au",
@@ -20,7 +21,7 @@ var countries = {
     "greetingFormular": "G'day",
     "salary": 13.4,
     "employeeNumber": "90,001",
-    "tpb": 1047600
+    "tpb": 1048000
   },
   "IN": {
     "code": "country-in",
@@ -28,7 +29,7 @@ var countries = {
     "greetingFormular": "Namaste",
     "salary": 0.66,
     "employeeNumber": "#4,001",
-    "tpb": 12927600
+    "tpb": 12928000
   },
   "IT": {
     "code": "country-it",
@@ -36,7 +37,7 @@ var countries = {
     "greetingFormular": "Ciao",
     "salary": 9.2,
     "employeeNumber": "#3,045",
-    "tpb": 1839600
+    "tpb": 1840000
   },
   "ME": {
     "code": "country-me",
@@ -52,7 +53,7 @@ var countries = {
     "greetingFormular": "Long days and pleasant nights",
     "salary": 1,
     "employeeNumber": "#1",
-    "tpb": 100000
+    "tpb": 3000
   },
   "US": {
     "code": "country-us",
@@ -157,6 +158,12 @@ function loadChart() {
     });
     rePlaceholders([homeCountry]);
     fryFry($('#home-fry'), homeCountry);
+    var chartWrapper = $('#chart-wrapper');
+    for (var key in countries) {
+      if (countries[key] === homeCountry) continue;
+      chartWrapper.append('<p class="french-fry"></p>');
+      fryFry($('.french-fry:last'), countries[key]);
+    }
   });
 }
 
@@ -213,18 +220,4 @@ function ajaxError(response, status, xhr) {
     var msg = "Sorry but there was an error: ";
     console.log(msg + xhr.status + " " + xhr.statusText);
   }
-}
-
-// from https://coderwall.com/p/wkdefg/converting-milliseconds-to-hh-mm-ss-mmm
-function msToTime(duration) {
-  var milliseconds = parseInt((duration % 1000) / 100),
-    seconds = parseInt((duration / 1000) % 60),
-    minutes = parseInt((duration / (1000 * 60)) % 60),
-    hours = parseInt((duration / (1000 * 60 * 60)) % 24);
-
-  hours = (hours < 10) ? "0" + hours : hours;
-  minutes = (minutes < 10) ? "0" + minutes : minutes;
-  seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-  return hours + ":" + minutes + ":" + seconds;
 }
