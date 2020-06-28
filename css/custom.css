@@ -230,10 +230,12 @@ button {
 
 @keyframes micro-view-animation {
   from {
-    transform: scale(100%);
+    transform: scale(1);
+     transform: scale(100%);
   }
 
   to {
+    transform: scale(1.8);
     transform: scale(180%);
   }
 }
