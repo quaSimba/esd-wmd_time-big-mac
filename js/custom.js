@@ -68,7 +68,12 @@ function loadPainting() {
   $('#lower-content').load('ajax/canvas.html', ajaxError(), function() {
     $('#canvas').on('load', loadScript('js/painting.js'));
   });
-  loadHTML('#burger-container', 'ajax/burger-background.html #burger-patty')    
+//  loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
+//     $('#top-bun').remove();
+//  });    
+     loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function(){
+        $('.burger-layer').remove('#top-bun'); 
+     });    
 }
 
 function niceTry() {
@@ -78,7 +83,11 @@ function niceTry() {
 
         
     });
-    loadHTML('#burger-container', 'ajax/burger-background.html #middle-bun');
+//    loadHTML('#burger-container', 'ajax/burger-background.html #middle-bun');
+     loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function(){
+        $('.burger-layer').remove('#top-bun'); 
+        $('.burger-layer').remove('#burger-patty'); 
+     });    
  } 
 
 function openChart(){
@@ -86,7 +95,12 @@ function openChart(){
     loadHTML('#lower-content', 'ajax/chart.html', function(){
 
     });
-    loadHTML('#burger-container', 'ajax/burger-background.html #bottom-bun');
+//    loadHTML('#burger-container', 'ajax/burger-background.html #bottom-bun');
+     loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function(){
+        $('.burger-layer').remove('#top-bun'); 
+        $('.burger-layer').remove('#burger-patty');
+        $('.burger-layer').remove('#middle-bun'); 
+     });    
     
 }
 
