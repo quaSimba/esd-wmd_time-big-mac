@@ -15,6 +15,7 @@ h1 {
   font-weight: 500;
   color: #FFBC0D;
   margin-top: 0;
+  filter: drop-shadow(0 0px 10px #ffffffe6);
 }
 
 p {
@@ -120,7 +121,8 @@ button {
 /* info text background */
 #info-text {
   width: 100%;
-  color: whitesmoke;
+  color: #e6e6e6;
+  ;
 }
 
 #info-links {
@@ -181,14 +183,14 @@ button {
 }
 
 /* burger backgrounds */
-#top-bun{   
+#top-bun {
   background-image: url("../resources/img/burger_Top-Bun.png");
   background-size: contain;
   position: relative;
   top: 0vh;
   z-index: 2;
-
 }
+
 #burger-patty {
   background-image: url("../resources/img/burger_Top-Patty.png");
   background-size: contain;
@@ -298,20 +300,19 @@ button {
 #flag-IT {
   left: 45%;
   top: 0;
-  transform: rotate(5deg);    
+  transform: rotate(5deg);
 }
 
 #flag-ZA {
   left: 45%;
   top: 25%;
-  transform: rotate(5deg);   
+  transform: rotate(5deg);
 }
 
 #flag-IN {
   left: 60%;
   top: 13%;
   transform: rotate(-5deg);
-
 }
 
 #flag-AU {

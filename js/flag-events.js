@@ -32,9 +32,9 @@ $("input.flag").on('click', function(event) {
     default:
       break;
   }
-  for (var i = 0; i < flags.length; i++) {
-    flags[i].remove();
-  }
+  flags.forEach(function(flag) {
+    flag.remove();
+  });
 
   $(selectedFlag).off();
 
