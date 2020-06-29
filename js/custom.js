@@ -8,10 +8,10 @@ $(document).ready(
     infoContent = $('#info-content');
     burgerContainer = $('#burger-container');
     firstRun = true;
-    //loadStart();
-    loadPainting();
+    loadStart();
+    //loadPainting();
     //loadContract();
-    lowerContent.removeAttr('hidden');
+    //lowerContent.removeAttr('hidden');
 
     loadScript("js/french-fries.js", function() {
       //loadNiceTry();
