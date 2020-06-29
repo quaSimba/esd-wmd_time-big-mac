@@ -230,6 +230,8 @@ button {
 
 .french-fry {
   background-repeat: no-repeat;
+  background-position-x: -87.5vw;
+  background-size: 100% 100%;
   position: relative;
   box-sizing: border-box;
   width: 100vw;
