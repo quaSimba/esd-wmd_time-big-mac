@@ -4,6 +4,10 @@ var brushes = ['resources/img/texture_brush-1.png', 'resources/img/texture_brush
 var strokeCounter = 0;
 brush.src = brushes[strokeCounter];
 
+window.addEventListener("resize", function() {
+
+});
+
 var paintingInstructions = [
   'Draw your Big Mac above.</br>First comes a bun.',
   'Now 100% beef.',
@@ -14,8 +18,9 @@ var paintingInstructions = [
   'Letuce, please.',
   'Top it with more bread.'
 ];
-
-var canvas = $('#canvas');
+var canvasWrapper = $('#canvas-wrapper');
+var canvas = $('<canvas width="' + canvasWrapper.innerWidth() + '" height="' + canvasWrapper.innerHeight() + '"id="canvas"></canvas>');
+canvasWrapper.prepend(canvas);
 var ctx = canvas[0].getContext('2d');
 ctx.lineJoin = ctx.lineCap = 'round';
 var hasStroked = false;

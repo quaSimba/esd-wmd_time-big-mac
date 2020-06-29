@@ -178,7 +178,7 @@ button {
   background-size: contain;
   transform: scale(1.2);
 }
- 
+
 /* burger backgrounds */
 #top-bun {
   background-image: url("../resources/img/burger_Top-Bun.png");
@@ -323,17 +323,18 @@ button {
 /* Style canvas for burger painting, not possible to do it responsively */
 #canvas-wrapper {
   position: relative;
-}
-
-canvas {
+  height: 33vh;
+  margin-top: 16px;
   display: block;
   border: 5px dashed #00000030;
   border-radius: 15px;
 }
 
+canvas {}
+
 #clear-canvas_button {
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 15px;
   width: 18px;
 }

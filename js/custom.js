@@ -8,10 +8,10 @@ $(document).ready(
     infoContent = $('#info-content');
     burgerContainer = $('#burger-container');
     firstRun = true;
-    loadStart();
-    //loadPainting();
+    //loadStart();
+    loadPainting();
     //loadContract();
-    //lowerContent.removeAttr('hidden');
+    lowerContent.removeAttr('hidden');
 
     loadScript("js/french-fries.js", function() {
       //loadNiceTry();
@@ -238,14 +238,12 @@ function wipeContents() {
 
 function collapseHeader(choice) {
   if (choice) {
-    console.log('collapse');
     $('#logo').animate({
       width: '30px'
     }, "fast");
     $('#info-icon').css('margin-top', '10px');
     $('#slogan').attr('hidden', 'true');
   } else {
-    console.log('enlarge');
     $('#logo').animate({
       width: '60px'
     }, "fast");

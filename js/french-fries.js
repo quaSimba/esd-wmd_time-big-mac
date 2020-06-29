@@ -39,7 +39,7 @@ function fryFry(target, country) {
   target.attr('id', country.code);
   var progress = msToTime(country.tpb - timeElapsed);
   if ((country.tpb - timeElapsed) < 1000) progress = 'finished!';
-  target.html('<span loaded=true" class="country-field ' + country.code + '">' + country.name + '</span> – <span loaded=true class="tpb-field ' + country.code + '">' + progress + '</span>');
+  target.html('<span loaded=true class="country-field ' + country.code + '">' + country.name + '</span> – <span loaded=true class="tpb-field ' + country.code + '">' + progress + '</span>');
   target.css('background-image', 'url(' + fryRandomiser() + ')');
 
   var fryDistanceToCover = Math.abs(parseInt(target.css('background-position-x')));
