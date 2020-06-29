@@ -120,7 +120,7 @@ function loadPainting() {
       top: '-100px'
     }, "slow");
     $('#top-bun').animate({
-      top: '-500px',
+      top: '-600px',
       left: '300px'
     }, "slow");
 
@@ -146,7 +146,7 @@ function loadNiceTry() {
         top: '-200px'
       }, "slow");
       $('#burger-patty').animate({
-        top: '-500px',
+        top: '-600px',
         left: '300px'
       }, "slow");
 
@@ -171,7 +171,7 @@ function loadChart() {
         top: '-280px'
       }, "slow");
       $('#middle-bun').animate({
-        top: '-500px',
+        top: '-600px',
         left: '300px'
       }, "slow");
 
