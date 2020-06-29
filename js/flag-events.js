@@ -33,7 +33,11 @@ $("input.flag").on('click', function(event) {
       break;
   }
   flags.forEach(function(flag) {
-    flag.remove();
+//    flag.remove();
+      $(flag).animate({
+      top: '-600px'
+    }, 700);
+     
   });
 
   $(selectedFlag).off();
