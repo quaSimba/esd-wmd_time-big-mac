@@ -28,7 +28,7 @@ function animateFry(fry, accelerationFactor, delta) {
   }, 1000 / accelerationFactor);
 
   fry.stop().animate({
-    backgroundPosition: '0px'
+    backgroundPositionX: '0vw'
   }, {
     duration: helperFry.timeRemaining / accelerationFactor,
     easing: 'linear'
@@ -42,9 +42,9 @@ function fryFry(target, country) {
   target.html('<span loaded=true" class="country-field ' + country.code + '">' + country.name + '</span> – <span loaded=true class="tpb-field ' + country.code + '">' + progress + '</span>');
   target.css('background-image', 'url(' + fryRandomiser() + ')');
 
-  var fryDistanceToCover = target.outerWidth() - parseInt(target.css('padding-left'));
+  var fryDistanceToCover = Math.abs(parseInt(target.css('background-position-x')));
   var fryDistanceCovered = fryDistanceToCover * timeElapsed / country.tpb;
-  target.css('background-position', -(fryDistanceToCover) + fryDistanceCovered);
+  if (fryDistanceCovered !== 0) target.css('background-position-x', -(fryDistanceToCover) + fryDistanceCovered);
 
   fries[target.attr('id')] = {
     'duration': country.tpb,

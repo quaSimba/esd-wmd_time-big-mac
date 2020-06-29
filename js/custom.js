@@ -1,4 +1,4 @@
-var upperContent, lowerContent, infoContent, burgerContainer;
+var upperContent, lowerContent, infoContent, burgerContainer, firstRun;
 $(document).ready(
   function() {
     $('body').disablescroll();
@@ -7,6 +7,7 @@ $(document).ready(
     lowerContent = $('#lower-content');
     infoContent = $('#info-content');
     burgerContainer = $('#burger-container');
+    firstRun = true;
     loadStart();
     //loadPainting();
     //loadContract();
@@ -96,6 +97,7 @@ function loadStart() {
 }
 
 function loadContract() {
+  firstRun = false;
   collapseHeader(true);
   upperContent.empty();
   loadHTML('#lower-content', 'ajax/contract.html', function() {
@@ -226,7 +228,7 @@ function toggleInfo() {
   }, "slow");
   burgerContainer.toggleClass('strong-blur');
   if (lowerContent.children().length) lowerContent.toggle();
-  collapseHeader(lowerContent.is(':visible'));
+  collapseHeader(lowerContent.is(':visible') && !firstRun);
 }
 
 function wipeContents() {
@@ -236,15 +238,15 @@ function wipeContents() {
 
 function collapseHeader(choice) {
   if (choice) {
-    //    $('#logo-big').attr('id', 'logo-small');
-    $('#logo-big').animate({
+    console.log('collapse');
+    $('#logo').animate({
       width: '30px'
     }, "fast");
     $('#info-icon').css('margin-top', '10px');
     $('#slogan').attr('hidden', 'true');
   } else {
-    //    $('#logo-small').attr('id', 'logo-big');
-    $('#logo-big').animate({
+    console.log('enlarge');
+    $('#logo').animate({
       width: '60px'
     }, "fast");
     $('#info-icon').css('margin-top', '20px');
@@ -253,11 +255,13 @@ function collapseHeader(choice) {
 }
 
 function restart() {
-  collapseHeader(false);
-  if (infoContent.is(':visible')) toggleInfo();
+  firstRun = true;
+  if (infoContent.is(':visible'))
+    toggleInfo();
   wipeContents();
   setTimeElapsed(0);
   fries = [];
+  firstRun = true;
   loadStart();
 }
 
