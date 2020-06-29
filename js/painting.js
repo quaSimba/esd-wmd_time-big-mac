@@ -4,10 +4,6 @@ var brushes = ['resources/img/texture_brush-1.png', 'resources/img/texture_brush
 var strokeCounter = 0;
 brush.src = brushes[strokeCounter];
 
-window.addEventListener("resize", function() {
-
-});
-
 var paintingInstructions = [
   'Draw your Big Mac above.</br>First comes a bun.',
   'Now 100% beef.',
@@ -18,18 +14,24 @@ var paintingInstructions = [
   'Letuce, please.',
   'Top it with more bread.'
 ];
-var canvasWrapper = $('#canvas-wrapper');
-var canvas = $('<canvas width="' + canvasWrapper.innerWidth() + '" height="' + canvasWrapper.innerHeight() + '"id="canvas"></canvas>');
-canvasWrapper.prepend(canvas);
-var ctx = canvas[0].getContext('2d');
-ctx.lineJoin = ctx.lineCap = 'round';
-var hasStroked = false;
 
-var isDrawing, lastPoint;
-var canvasBounds = canvas[0].getBoundingClientRect();
+var canvas = $('<canvas width="300px" height="200px"id="canvas"></canvas>');
+var canvasWrapper, isDrawing, lastPoint, canvasBounds, hasStroked, ctx;
+
+loadCanvas();
 
 $('#painting-instructions').html(paintingInstructions[strokeCounter]);
 enablePainting();
+
+function loadCanvas() {
+  canvasWrapper = $('#canvas-wrapper');
+  canvas = $('<canvas width="' + canvasWrapper.innerWidth() + '" height="' + canvasWrapper.innerHeight() + '"id="canvas"></canvas>');
+  canvasWrapper.prepend(canvas);
+  ctx = canvas[0].getContext('2d');
+  ctx.lineJoin = ctx.lineCap = 'round';
+  hasStroked = false;
+  canvasBounds = canvas[0].getBoundingClientRect();
+}
 
 function enablePainting() {
   canvas.on('mousedown touchstart', handleDrawingStart);
@@ -97,6 +99,12 @@ function handleDrawingEnd(e) {
   brush.src = (strokeCounter < 8) ? brushes[strokeCounter] : finishPainting();
   $('#painting-instructions').html(paintingInstructions[strokeCounter]);
 }
+
+window.addEventListener("resize", function() {
+  clearPainting();
+  loadCanvas();
+  enablePainting();
+});
 
 function distanceBetween(point1, point2) {
   return Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
