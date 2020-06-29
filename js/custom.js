@@ -1,4 +1,6 @@
 var upperContent, lowerContent, infoContent, burgerContainer, firstRun;
+
+// Kick-starting the page
 $(document).ready(
   function() {
     $('body').disablescroll();
@@ -21,7 +23,8 @@ $(document).ready(
   }
 );
 
-// please round tpb to full seconds / 1000 ms
+// Declare a list of countries to present.
+// Please round tpb to full seconds / 1000 ms
 var countries = {
   "AU": {
     "code": "country-au",
@@ -73,6 +76,8 @@ var countries = {
   }
 };
 
+
+// Declare a default home country
 var homeCountry = {
   "code": "country-mw",
   "name": "Mid World",
@@ -82,11 +87,9 @@ var homeCountry = {
   "tpb": 1000000
 };
 
-var isInfoLoaded = false;
-
-
-
+// Loader functions for the different pages
 function loadStart() {
+  // Prepare the screen and load new content
   collapseHeader(false);
   wipeContents();
   loadHTML('#info-content', 'ajax/info.html');
@@ -97,6 +100,7 @@ function loadStart() {
 }
 
 function loadContract() {
+  // Prepare the screen and load new content
   firstRun = false;
   collapseHeader(true);
   upperContent.empty();
@@ -116,6 +120,7 @@ function loadContract() {
 }
 
 function loadPainting() {
+  // Prepare the screen and load new content
   collapseHeader(true);
   loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
     $('.burger-layer').animate({
@@ -125,7 +130,6 @@ function loadPainting() {
       top: '-600px',
       left: '300px'
     }, "slow");
-
   });
   loadHTML('#upper-content', 'ajax/texts.html #new-order-text');
   lowerContent.load('ajax/canvas.html', ajaxError(), function() {
@@ -135,33 +139,43 @@ function loadPainting() {
 }
 
 function loadNiceTry() {
+  // Prepare the screen and load new content
   collapseHeader(true);
   upperContent.empty();
   loadHTML('#burger-container', 'ajax/burger-background.html #burger_middle-bun');
+
+  // Load and animate the burger to the background in layers and animate it
   loadHTML('#lower-content', 'ajax/nice-try.html', function() {
     $('.home-country').each(function() {
       $(this).addClass(homeCountry.code);
     });
-    loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer', function() {
-      $('.burger-layer').remove('#top-bun');
-      $('.burger-layer').animate({
-        top: '-200px'
-      }, "slow");
-      $('#burger-patty').animate({
-        top: '-600px',
-        left: '300px'
-      }, "slow");
+    loadHTML('#burger-container', 'ajax/burger-background.html .burger-layer',
+      function() {
+        $('.burger-layer').remove('#top-bun');
+        $('.burger-layer').animate({
+          top: '-200px'
+        }, "slow");
+        $('#burger-patty').animate({
+          top: '-600px',
+          left: '300px'
+        }, "slow");
+      });
 
-    });
+    // Filling placeholders
     rePlaceholders([homeCountry]);
+
+    // Load the french fry for the selected country
     fryFry($('#home-fry'), homeCountry);
   });
 }
 
 function loadChart() {
+  // Prepare the screen and load new content
   collapseHeader(true);
   upperContent.empty();
   loadHTML('#burger-container', 'ajax/burger-background.html #burger_bottom-bun');
+
+  // Load and animate the burger to the background in layers and animate it
   loadHTML('#lower-content', 'ajax/chart.html', function() {
     $('.home-country').each(function() {
       $(this).addClass(homeCountry.code);
@@ -176,10 +190,12 @@ function loadChart() {
         top: '-600px',
         left: '300px'
       }, "slow");
-
-
     });
+
+    // Filling placeholders
     rePlaceholders([homeCountry]);
+
+    // Set the ellapsed time before loading new fries to keep track of the progress
     setTimeElapsed();
     fryFry($('#home-fry'), homeCountry);
     var chartWrapper = $('#chart-wrapper');
@@ -192,6 +208,7 @@ function loadChart() {
   });
 }
 
+// Fill placeholders with actual data based on user choices
 function rePlaceholders(replaceCountries) {
   replaceCountries.forEach(function(country) {
     $('[loaded != true].' + country.code + '.country-field').each(function() {
@@ -217,6 +234,7 @@ function rePlaceholders(replaceCountries) {
   });
 }
 
+// Toggle the info overlay
 function toggleInfo() {
   infoContent.toggle();
   upperContent.toggle();
@@ -231,11 +249,13 @@ function toggleInfo() {
   collapseHeader(lowerContent.is(':visible') && !firstRun);
 }
 
+// Purge the screen from non-default contents
 function wipeContents() {
   upperContent.empty();
   lowerContent.empty();
 }
 
+// Collapse or enlarge the header
 function collapseHeader(choice) {
   if (choice) {
     $('#logo').animate({
@@ -252,6 +272,7 @@ function collapseHeader(choice) {
   }
 }
 
+// Restarting the game
 function restart() {
   firstRun = true;
   if (infoContent.is(':visible'))
@@ -263,9 +284,9 @@ function restart() {
   loadStart();
 }
 
-// helper functions:
+// Helper functions:
 
-// method to load external scripts
+// Function to load external scripts
 function loadScript(url, callback) {
   $.ajax({
     url: url,
@@ -275,6 +296,7 @@ function loadScript(url, callback) {
   });
 }
 
+// Function to load additional HTML pages
 function loadHTML(target, source, callback) {
   $(target).load(source, ajaxError(), callback);
 }

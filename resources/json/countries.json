@@ -1,40 +1,38 @@
 {
   "AU": {
+    "code": "country-au",
     "name": "Australia",
     "greetingFormular": "G'day",
     "salary": 13.4,
     "employeeNumber": "90,001",
-    "tpb": 1047600
+    "tpb": 1048000
   },
   "IN": {
+    "code": "country-in",
     "name": "India",
     "greetingFormular": "Namaste",
     "salary": 0.66,
     "employeeNumber": "#4,001",
-    "tpb": 12927600
+    "tpb": 12928000
   },
   "IT": {
+    "code": "country-it",
     "name": "Italy",
     "greetingFormular": "Ciao",
     "salary": 9.2,
     "employeeNumber": "#3,045",
-    "tpb": 1839600
+    "tpb": 1840000
   },
   "ME": {
+    "code": "country-me",
     "name": "Mexico",
     "greetingFormular": "Hola",
     "salary": 1,
     "employeeNumber": "#11,501",
     "tpb": 10080000
   },
-  "MW": {
-    "name": "Mid World",
-    "greetingFormular": "Long days and pleasant nights",
-    "salary": 1,
-    "employeeNumber": "#1",
-    "tpb": 12000
-  },
   "US": {
+    "code": "country-us",
     "name": "America",
     "greetingFormular": "Hey",
     "salary": 9.03,
@@ -42,6 +40,7 @@
     "tpb": 2196000
   },
   "ZA": {
+    "code": "country-za",
     "name": "South Africa",
     "greetingFormular": "Hallo",
     "salary": 0.97,

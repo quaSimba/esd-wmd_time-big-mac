@@ -1,6 +1,7 @@
 var timeElapsed = 0;
 var fries = [];
 
+// Selecting a random background image for the fry
 function fryRandomiser() {
   var fryImages = [
     'resources/img/french-fry-01.svg',
@@ -10,12 +11,14 @@ function fryRandomiser() {
   return fryImages[Math.floor(Math.random() * fryImages.length)];
 }
 
+// Animate a fry
 function animateFry(fry, accelerationFactor, delta) {
   var helperFry = fries[fry.attr('id')];
   clearInterval(helperFry.intervalID);
   var tpbField = fry.find('.tpb-field');
-  var lastStep = new Date();
 
+  // Time-counting based on progress since last interval and an acceleration factor
+  var lastStep = new Date();
   helperFry.intervalID = setInterval(function() {
     if (helperFry.timeRemaining > 1000) {
       helperFry.timeRemaining -= (new Date() - lastStep) * accelerationFactor;
@@ -27,6 +30,7 @@ function animateFry(fry, accelerationFactor, delta) {
     }
   }, 1000 / accelerationFactor);
 
+  // Move the fry according to the time remaining for it
   fry.stop().animate({
     backgroundPositionX: '0vw'
   }, {
@@ -35,6 +39,7 @@ function animateFry(fry, accelerationFactor, delta) {
   });
 }
 
+// Create a fry and add it to a HTML target
 function fryFry(target, country) {
   target.attr('id', country.code);
   var progress = msToTime(country.tpb - timeElapsed);
@@ -52,6 +57,7 @@ function fryFry(target, country) {
     'intervalID': null
   };
 
+  // Animate the fry, add EventListeners to it to speed up on click/touch and hold
   animateFry(target, 1);
   target.on('mousedown touchstart', function() {
     $('.french-fry').each(function() {
@@ -65,6 +71,7 @@ function fryFry(target, country) {
   });
 }
 
+// Keep track of the ellapsed time for persistence from one screen to the other
 function setTimeElapsed(value) {
   if (value !== undefined) {
     timeElapsed = value;
@@ -74,7 +81,7 @@ function setTimeElapsed(value) {
   timeElapsed = firstFry.duration - firstFry.timeRemaining;
 }
 
-// from https://coderwall.com/p/wkdefg/converting-milliseconds-to-hh-mm-ss-mmm
+// Translate Milliseconds to a time display. From https://coderwall.com/p/wkdefg/converting-milliseconds-to-hh-mm-ss-mmm
 function msToTime(duration) {
   var milliseconds = parseInt((duration % 1000) / 100),
     seconds = parseInt((duration / 1000) % 60),
