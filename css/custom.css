@@ -179,9 +179,10 @@ button {
 
 #burger-flags {
   background-image: url("../resources/img/burger@3x.png");
-  transform: scale(1.1);
+  background-size: contain;
+  transform: scale(1.2);
 }
-
+ 
 /* burger backgrounds */
 #top-bun {
   background-image: url("../resources/img/burger_Top-Bun.png");
@@ -266,7 +267,7 @@ button {
 
 @keyframes micro-view-animation {
   from {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 
   to {
